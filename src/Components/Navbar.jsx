@@ -5,7 +5,7 @@ import { HiMiniBars3CenterLeft } from "react-icons/hi2";
 import useAuth from "../CustomHooks/useAuth";
 import { useState } from "react";
 const Navbar = () => {
-  const { user } = useAuth();
+  const { user,LogOut,LogIn } = useAuth();
   const [toggle, setToggle] = useState(false);
   return (
     <div className=" bg-slate-100 shadow-md">
@@ -106,9 +106,9 @@ const Navbar = () => {
             </div>
             <div className="dropdown dropdown-end">
               <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-                <div className="text-3xl">
+                <div className="text-3xl w-[36px] ">
                   {user ? (
-                    <img src={user?.image} alt="" />
+                    <img src={user?.photoURL} alt="" className="rounded-full "/>
                   ) : (
                     <FaUserCircle className=""></FaUserCircle>
                   )}
@@ -128,7 +128,10 @@ const Navbar = () => {
                   <a>Settings</a>
                 </li>
                 <li>
-                  <a>Logout</a>
+                    {
+                        user?<a onClick={()=>{LogOut()}}>Logout</a>:<a href="/logIn">LogIn</a>
+                    }
+                  
                 </li>
               </ul>
             </div>
