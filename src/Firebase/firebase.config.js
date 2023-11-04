@@ -1,6 +1,6 @@
 
 import { initializeApp } from "firebase/app";
-import getAuth from "firebase/auth";
+import {getAuth} from "firebase/auth";
 const firebaseConfig = {
   apiKey: "AIzaSyAd2GQ4hY33OVzeyTYmE9WZYnbXGY4oMEk",
   authDomain: "restaurant-management-6fce7.firebaseapp.com",
