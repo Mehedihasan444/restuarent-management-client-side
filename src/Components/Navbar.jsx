@@ -25,7 +25,7 @@ const Navbar = () => {
                     }}
                   ></HiMiniBars3CenterLeft>
                 </div>
-                <div className={`absolute top-[54px] left-0 w-60  transition ease-in-out delay-1000 ${toggle?'-ml-1':'-ml-64'}`}>
+                <div className={`absolute top-[54px] left-0 w-60 z-50  transition ease-in-out delay-1000 ${toggle?'-ml-1':'-ml-64'}`}>
                   <ul className="menu menu-vertical p-4 bg-slate-100  h-screen text-base-content -ml-1">
                     <li>
                       <NavLink to="/" className="">

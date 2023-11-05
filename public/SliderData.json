@@ -1,0 +1,47 @@
+[
+  {
+    "image": "https://img.freepik.com/free-photo/crispy-fried-chicken-plate-with-salad-carrot_1150-20212.jpg?w=900&t=st=1699133424~exp=1699134024~hmac=998a1d957568f518670e1c4a89d3f969e8af74db7d18eae6185b9e3200ff7aa8",
+    "headingTitle": "Welcome to Our Restaurant",
+    "shortDescription": "Discover the finest flavors and exquisite dishes in town.",
+    "button": {
+      "text": "View All Menus",
+      "link": "/menus"
+    }
+  },
+  {
+    "image": "https://img.freepik.com/free-photo/chicken-skewers-with-slices-sweet-peppers-dill_2829-18813.jpg?w=900&t=st=1699133403~exp=1699134003~hmac=57967103a5aee8bf326ad3f5e9e8429bd2e43de058446d1b365ac1ceac1ee02c",
+    "headingTitle": "Delicious Cuisine",
+    "shortDescription": "Indulge in a world of delectable dishes created with passion.",
+    "button": {
+      "text": "View All Menus",
+      "link": "/menus"
+    }
+  },
+  {
+    "image": "https://img.freepik.com/free-photo/exploding-burger-with-vegetables-melted-cheese-black-background-generative-ai_157027-1734.jpg?w=900&t=st=1699133374~exp=1699133974~hmac=502525861c75995bd52de8809b11e1e2ad2ebb37ee19e14f01d83370ea4da6f7",
+    "headingTitle": "Chef's Specials",
+    "shortDescription": "Experience our chef's signature creations that are second to none.",
+    "button": {
+      "text": "View All Menus",
+      "link": "/menus"
+    }
+  },
+  {
+    "image": "https://img.freepik.com/free-photo/penne-pasta-tomato-sauce-with-chicken-tomatoes-wooden-table_2829-19744.jpg?w=900&t=st=1699133334~exp=1699133934~hmac=b2b1b6b8371dc1826964a566c9a36c5d1b1663154c3ac39b2811d26189fd8ea3",
+    "headingTitle": "Dine with a View",
+    "shortDescription": "Enjoy breathtaking views while savoring delectable dishes.",
+    "button": {
+      "text": "View All Menus",
+      "link": "/menus"
+    }
+  },
+  {
+    "image": "https://img.freepik.com/free-photo/baked-chicken-wings-asian-style-tomatoes-sauce-plate_2829-10657.jpg?w=996&t=st=1699161684~exp=1699162284~hmac=27c4ea6e920840ccabc0ec1050ccb4d8745ff3a84afc57cbc8f3fb3796768546",
+    "headingTitle": "Unforgettable Dining Experience",
+    "shortDescription": "We aim to provide you with a memorable and delightful dining journey.",
+    "button": {
+      "text": "View All Menus",
+      "link": "/menus"
+    }
+  }
+]
