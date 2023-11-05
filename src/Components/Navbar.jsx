@@ -5,7 +5,7 @@ import { HiMiniBars3CenterLeft } from "react-icons/hi2";
 import useAuth from "../CustomHooks/useAuth";
 import { useState } from "react";
 const Navbar = () => {
-  const { user,LogOut,LogIn } = useAuth();
+  const { user,LogOut } = useAuth();
   const [toggle, setToggle] = useState(false);
   return (
     <div className=" bg-slate-100 shadow-md">
@@ -104,7 +104,7 @@ const Navbar = () => {
                 </div>
               </div>
             </div>
-            <div className="dropdown dropdown-end">
+            <div className="dropdown dropdown-end z-50">
               <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                 <div className="text-3xl w-[36px] ">
                   {user ? (
@@ -119,13 +119,16 @@ const Navbar = () => {
                 className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
               >
                 <li>
-                  <a className="justify-between">
-                    Profile
-                    <span className="badge">New</span>
+                  <a href="/" className="justify-between">
+                  My added food items
+                    {/* <span className="badge">New</span> */}
                   </a>
                 </li>
                 <li>
-                  <a>Settings</a>
+                  <a href="/addFood">Add a food item</a>
+                </li>
+                <li>
+                  <a href="/">My ordered food items</a>
                 </li>
                 <li>
                     {

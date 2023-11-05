@@ -27,7 +27,7 @@ const Banner = () => {
           />
           <div className="absolute top-0 left-0 bg-gradient-to-t from-[#000000a8] to- right-0 bottom-0 flex justify-center items-center  ">
             <div className="space-y-4">
-              <h1 className="text-3xl sm:text-6xl font-extrabold text-slate-300 text-center">{slide.headingTitle}</h1>
+              <h1 className="text-3xl sm:text-6xl font-extrabold text-white text-center">{slide.headingTitle}</h1>
             <p className="text-gray-300 text-center">{slide.shortDescription}</p>
             <div className="flex justify-center items-center">
               <a href={slide.button.link} className="">
