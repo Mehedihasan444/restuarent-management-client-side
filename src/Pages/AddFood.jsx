@@ -5,15 +5,7 @@ import useAxios from "../CustomHooks/useAxios";
 import Swal from "sweetalert2";
 const popularCountries = ["USA", "Italy", "Japan", "Mexico", "India"];
 const popularFoodCategories = [
-  "Appetizer",
-  "Main Course",
-  "Dessert",
-  "Beverage",
-  "Salad",
-  "Pasta",
-  "Sushi",
-  "Pizza",
-];
+  "Appetizer","Main Course","Dessert","Beverage","Salad","Pasta","Sushi","Pizza"];
 
 const AddFood = () => {
   const { user } = useAuth();
@@ -32,16 +24,7 @@ const AddFood = () => {
     e.preventDefault();
 
     const information = {
-      foodName,
-      foodImage,
-      foodCategory,
-      quantity,
-      price,
-      foodOrigin,
-      shortDescription,
-      userName,
-      userEmail,
-    };
+      foodName,foodImage,foodCategory,quantity,price,foodOrigin,shortDescription,userName,userEmail};
     // console.log(information);
     axios
       .post("/user/add-food", information)

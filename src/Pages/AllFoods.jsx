@@ -3,6 +3,7 @@ import H1Tag from "../CustomTags/H1Tag";
 import useAxios from "../CustomHooks/useAxios";
 import FoodCard from "../Components/FoodCard";
 import MaxWidth from "../CustomTags/MaxWidth";
+import Loading from "../Components/Loading";
 
 const AllFoods = () => {
   const axios = useAxios();
@@ -19,7 +20,8 @@ const AllFoods = () => {
     },
   });
 
-  if (isPending) return "Loading...";
+  if (isPending) return <Loading></Loading>
+//   "Loading...";
 
   if (error) return "An error has occurred: " + error.message;
 

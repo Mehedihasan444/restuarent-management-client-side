@@ -7,6 +7,8 @@ import Blog from "../Pages/Blog";
 import LogIn from "../Pages/LogIn";
 import Register from "../Pages/Register";
 import AddFood from "../Pages/AddFood";
+import FoodDetails from "../Pages/FoodDetails";
+import FoodOrder from "../Pages/FoodOrder";
 
 const Routes = createBrowserRouter([
     {
@@ -38,6 +40,14 @@ const Routes = createBrowserRouter([
                 path:"/addFood",
                 element:<AddFood></AddFood>
             },
+            {
+                path:"/foodDetails/:foodId",
+                element:<FoodDetails></FoodDetails>
+            },
+            {
+                path:"/foodOrder/:foodId",
+                element:<FoodOrder></FoodOrder>
+            }
         ]
     }
 ]);
