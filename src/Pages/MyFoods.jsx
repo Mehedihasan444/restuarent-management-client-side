@@ -7,6 +7,7 @@ import { MdOutlineDeleteOutline } from "react-icons/md";
 import { AiOutlineEye } from "react-icons/ai";
 import MaxWidth from "../CustomTags/MaxWidth";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 const MyFoods = () => {
   const { user } = useAuth();
@@ -14,7 +15,7 @@ const MyFoods = () => {
   const { isPending, data: foods } = useQuery({
     queryKey: ["foods", user],
     queryFn: async () => {
-      const res = await axios.get(`/user/added-foods/${user.email}`);
+      const res = await axios.get(`/user/added-foods?userEmail=${user.email}`);
       // console.log(res.data);
       return res.data;
     },
@@ -22,20 +23,7 @@ const MyFoods = () => {
   });
   if (isPending) return <Loading></Loading>;
 
-  // const handleUpdate=async (id)=>{
-  //   await axios.put(`/user/delete-food/${id}`)
-  //   .then(res=>{
-  //     if(res.data.deletedCount>0){
-  //       Swal.fire({
-  //         icon: "success",
-  //         title: "Oops...",
-  //         text: " product delete  successfully!",
 
-  //       });
-  //     }
-  //   });
-
-  // }
   const handleDelete = async (id) => {
     await axios.delete(`/user/delete-food/${id}`).then((res) => {
       console.log(res.data);
@@ -66,7 +54,7 @@ const MyFoods = () => {
           <tbody>
             {/* row 1 */}
 
-            {foods?.map((food) => (
+            {foods.result?.map((food) => (
               <tr key={food._id}>
                 <td>
                   <div className="flex items-center space-x-3">
@@ -91,14 +79,11 @@ const MyFoods = () => {
                 <td>{food.foodOrigin}</td>
                 <th>
                   <div className="flex gap-5 items-center ">
-                    <button
-                      className="btn text-xl  "
-                      onClick={() => {
-                        handleUpdate;
-                      }}
-                    >
-                      <FiEdit></FiEdit>
-                    </button>
+                    <Link to={`/updateFood/${food._id}`}>
+                      <button className="btn text-xl  ">
+                        <FiEdit></FiEdit>
+                      </button>
+                    </Link>
                     <button
                       className="btn text-2xl "
                       onClick={() => {
@@ -107,9 +92,12 @@ const MyFoods = () => {
                     >
                       <MdOutlineDeleteOutline></MdOutlineDeleteOutline>
                     </button>
+                    <Link to={`/foodDetails/${food._id}`}>
+
                     <button className="btn text-2xl ">
                       <AiOutlineEye></AiOutlineEye>
                     </button>
+                    </Link>
                   </div>
                 </th>
               </tr>

@@ -11,6 +11,7 @@ import FoodDetails from "../Pages/FoodDetails";
 import FoodOrder from "../Pages/FoodOrder";
 import MyFoods from "../Pages/MyFoods";
 import MyOrders from "../Pages/MyOrders";
+import UpdateFood from "../Pages/UpdateFood";
 
 const Routes = createBrowserRouter([
     {
@@ -57,6 +58,10 @@ const Routes = createBrowserRouter([
             {
                 path:"/myOrders",
                 element:<MyOrders></MyOrders>
+            },
+            {
+                path:"/updateFood/:foodId",
+                element:<UpdateFood></UpdateFood>
             }
         ]
     }
