@@ -2,7 +2,7 @@ import MaxWidth from "../CustomTags/MaxWidth";
 
 const Footer = () => {
   return (
-    <div className=" bg-slate-100">
+    <div className=" bg-slate-100 ">
       <MaxWidth>
         <footer className="footer p-10 text-base-content">
           <aside>
@@ -38,9 +38,9 @@ const Footer = () => {
             <a className="link link-hover">Press kit</a>
           </nav>
           <nav>
-            <form>
+            <form >
               <header className="footer-title">Newsletter</header>
-              <fieldset className="form-control w-80">
+              <fieldset className="form-control sm:w-80">
                 <label className="label">
                   <span className="label-text">Enter your email address</span>
                 </label>
@@ -48,9 +48,9 @@ const Footer = () => {
                   <input
                     type="text"
                     placeholder="username@site.com"
-                    className="input input-bordered w-full pr-16"
+                    className="input input-bordered w-full pr-20"
                   />
-                  <button className="btn btn-primary absolute top-0 right-0 rounded-l-none">
+                  <button className="btn btn-accent text-white absolute top-0 right-0 rounded-l-none">
                     Subscribe
                   </button>
                 </div>

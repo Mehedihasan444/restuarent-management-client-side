@@ -6,21 +6,30 @@ import { FiEdit } from "react-icons/fi";
 import { MdOutlineDeleteOutline } from "react-icons/md";
 import { AiOutlineEye } from "react-icons/ai";
 import MaxWidth from "../CustomTags/MaxWidth";
+
 const MyFoods = () => {
   const { user } = useAuth();
   const axios = useAxios();
-  const {
-    isPending,
-    data: foods,
-  } = useQuery({
-    queryKey: ["user.email"],
+  const { isPending, data: foods, } = useQuery({
+    queryKey: ["foods", user],
     queryFn: async () => {
       const res = await axios.get(`/user/added-foods/${user.email}`);
+      // console.log(res.data);
       return res.data;
     },
+    refetchOnReconnect: true
   });
-  //   console.log(foods);
   if (isPending) return <Loading></Loading>;
+
+const handleUpdate=(id)=>{
+
+  
+}
+const handleDelete=(id)=>{
+  axios.delete(`/user/delete-food/${id}`)
+  .then(res=>console.log(res.data.data));
+
+};
 
   return (
     <MaxWidth>
@@ -28,7 +37,7 @@ const MyFoods = () => {
         <table className="table">
           {/* head */}
           <thead>
-            <tr>
+            <tr className="text-xl">
               <th>Food Name</th>
               <th>Price</th>
               <th>Quantity</th>
@@ -41,7 +50,6 @@ const MyFoods = () => {
 
             {foods?.map((food) => (
               <tr key={food._id}>
-                
                 <td>
                   <div className="flex items-center space-x-3">
                     <div className="avatar">
@@ -64,10 +72,16 @@ const MyFoods = () => {
                 <td>{food.quantity}</td>
                 <td>{food.foodOrigin}</td>
                 <th>
-                  <div className="flex justify-evenly items-center text-xl">
-                    <FiEdit></FiEdit>
-                    <MdOutlineDeleteOutline></MdOutlineDeleteOutline>
-                    <AiOutlineEye></AiOutlineEye>
+                  <div className="flex gap-5 items-center ">
+                    <button className="btn text-xl  " onClick={()=>{handleUpdate}}>
+                      <FiEdit></FiEdit>
+                    </button>
+                    <button className="btn text-2xl " onClick={()=>{handleDelete}}>
+                      <MdOutlineDeleteOutline></MdOutlineDeleteOutline>
+                    </button>
+                    <button className="btn text-2xl " >
+                      <AiOutlineEye></AiOutlineEye>
+                    </button>
                   </div>
                 </th>
               </tr>

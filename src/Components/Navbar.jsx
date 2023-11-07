@@ -47,7 +47,7 @@ const Navbar = () => {
               </div>
             </div>
 
-            <div className="navbar-center hidden lg:flex justify-center flex-1">
+            <div className="navbar-center hidden sm:flex justify-center flex-1">
               {/* {*flex gap-5 items-center *} */}
               <ul className="menu menu-horizontal gap-3">
                 <li>

@@ -4,34 +4,163 @@ import useAxios from "../CustomHooks/useAxios";
 import FoodCard from "../Components/FoodCard";
 import MaxWidth from "../CustomTags/MaxWidth";
 import Loading from "../Components/Loading";
-
+import { useEffect, useState } from "react";
+import { BsSearch } from 'react-icons/bs';
 const AllFoods = () => {
   const axios = useAxios();
-
-  const {
-    data: foods,
-    isPending,
-    error,
-  } = useQuery({
-    queryKey: ["foods"],
+  const [categoryFilter, setCategoryFilter] = useState("");
+  const [sortByPrice, setSortByPrice] = useState("");
+  const [itemsPerPage, setItemsPerPage] = useState(10);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [data, setData] = useState({});
+  const [numberOfPages, setNumberOfPages] = useState(1);
+const [searchValue,setSearchValue] = useState('')
+const [search,setSearch]=useState('')
+  const { data: foods, isPending } = useQuery({
+    queryKey: [
+      "foods",
+      sortByPrice,
+      categoryFilter,
+      currentPage,
+      itemsPerPage,
+      numberOfPages,
+      searchValue
+    ],
     queryFn: async () => {
-      const response = await axios.get("/foods");
-      return response.data; // Return the data from the response
+      const response = await axios.get(
+        `/foods?foodName=${searchValue}&category=${categoryFilter}&sortField=price&sortOrder=${sortByPrice}&page=${currentPage}&limit=${itemsPerPage}`
+      );
+
+      return response.data;
     },
   });
 
-  if (isPending) return <Loading></Loading>
-//   "Loading...";
+  useEffect(() => {
+    if (foods) {
+      setData(foods);
+      const count = foods.count;
+      console.log(count);
+      const NumOfPages = Math.ceil(count / itemsPerPage);
+      setNumberOfPages(NumOfPages);
+    }
+  }, [foods, itemsPerPage]);
+  if (isPending) return <Loading></Loading>;
 
-  if (error) return "An error has occurred: " + error.message;
+  const pages = [...Array(numberOfPages).keys()];
+  const handleItemsPerPage = (e) => {
+    const val = parseInt(e.target.value);
+    setItemsPerPage(val);
+    setCurrentPage(1);
+  };
+  const handlePreviousPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
+  const handleNextPage = () => {
+    if (currentPage < pages.length) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
+
+  const handleSearch=()=>{
+    setSearchValue(search)
+    console.log(search);
+  }
+  // console.log(categoryFilter,sortByPrice);
 
   return (
     <MaxWidth>
-      <H1Tag>all foods</H1Tag>
-      <div className="grid sm:grid-cols-3 lg:grid-cols-4 gap-5 px-5 ">
-        {foods.map((food) => (
+      <div className="block text-center lg:hidden mt-10">
+        <H1Tag>All Foods</H1Tag>
+      </div>
+      <div className="space-y-2 text-center sm:text-left sm:flex  lg:justify-between items-center mb-10 lg:my-10 px-3">
+        <div className="hidden lg:flex">
+          <H1Tag>All Foods</H1Tag>
+        </div>
+        <div className="flex justify-center items-end mx-5 md:w-1/2 lg:w-auto relative">
+          <div className="form-control mt-5 ">
+            <input
+              type="text"
+              placeholder="Search"
+              name="search"
+              className="input input-bordered rounded-full  w-80  "
+              onChange={(e)=>setSearch(e.target.value)}
+            />
+            <div className="absolute top-1/2 right-2 md:right-8 lg:right-4 cursor-pointer">
+              <BsSearch onClick={handleSearch}></BsSearch>
+            </div>
+          </div>
+        </div>
+        <div className="flex gap-5 items-center md:w-1/2 lg:w-auto">
+          <div className="">
+            <label>Sort By Price</label>
+            <select
+              className="select w-full max-w-xs input-bordered"
+              value={sortByPrice}
+              onChange={(e) => setSortByPrice(e.target.value)}
+            >
+              <option value="">Random Price</option>
+              <option value="desc">High To Low</option>
+              <option value="asc">Low To High</option>
+            </select>
+          </div>
+          <div className="">
+            <label>Filter By Category</label>
+            <select
+              value={categoryFilter}
+              onChange={(e) => setCategoryFilter(e.target.value)}
+              className="select w-full max-w-xs input-bordered"
+            >
+              <option value="">All</option>
+              <option value="Appetizer">Appetizer</option>
+              <option value="Main Course">Main Course</option>
+              <option value="Dessert">Dessert</option>
+              <option value="Beverage">Beverage</option>
+              <option value="Salad">Salad</option>
+              <option value="Pasta">Pasta</option>
+              <option value="Sushi">Sushi</option>
+              <option value="Pizza">Pizza</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div className="grid sm:grid-cols-3 lg:grid-cols-4 gap-5 px-5 mb-10">
+        {data.result?.map((food) => (
           <FoodCard key={food._id} food={food}></FoodCard>
         ))}
+      </div>
+      <div className="flex justify-center sm:justify-end items-center pr-5">
+        <div className="py-10 text-center">
+          {/* <p>current page : {currentPage}</p> */}
+          <button className="btn btn-accent mr-3" onClick={handlePreviousPage}>
+            «
+          </button>
+          {pages.map((page) => (
+            <button
+              className={`${
+                currentPage === page + 1 ? "btn-disabled" : ""
+              } mr-2 btn btn-accent`}
+              key={page}
+              onClick={() => setCurrentPage(page + 1)}
+            >
+              {page + 1}
+            </button>
+          ))}
+          <button className="btn btn-accent" onClick={handleNextPage}>
+            »
+          </button>
+          <select
+            value={itemsPerPage}
+            onChange={handleItemsPerPage}
+            className="rounded-md ml-2 select  input-bordered"
+          >
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="20">20</option>
+            <option value="50">50</option>
+          </select>
+        </div>
       </div>
     </MaxWidth>
   );
