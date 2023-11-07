@@ -6,30 +6,48 @@ import { FiEdit } from "react-icons/fi";
 import { MdOutlineDeleteOutline } from "react-icons/md";
 import { AiOutlineEye } from "react-icons/ai";
 import MaxWidth from "../CustomTags/MaxWidth";
+import Swal from "sweetalert2";
 
 const MyFoods = () => {
   const { user } = useAuth();
   const axios = useAxios();
-  const { isPending, data: foods, } = useQuery({
+  const { isPending, data: foods } = useQuery({
     queryKey: ["foods", user],
     queryFn: async () => {
       const res = await axios.get(`/user/added-foods/${user.email}`);
       // console.log(res.data);
       return res.data;
     },
-    refetchOnReconnect: true
+    refetchOnReconnect: true,
   });
   if (isPending) return <Loading></Loading>;
 
-const handleUpdate=(id)=>{
+  // const handleUpdate=async (id)=>{
+  //   await axios.put(`/user/delete-food/${id}`)
+  //   .then(res=>{
+  //     if(res.data.deletedCount>0){
+  //       Swal.fire({
+  //         icon: "success",
+  //         title: "Oops...",
+  //         text: " product delete  successfully!",
 
-  
-}
-const handleDelete=(id)=>{
-  axios.delete(`/user/delete-food/${id}`)
-  .then(res=>console.log(res.data.data));
+  //       });
+  //     }
+  //   });
 
-};
+  // }
+  const handleDelete = async (id) => {
+    await axios.delete(`/user/delete-food/${id}`).then((res) => {
+      console.log(res.data);
+      if (res.data.deletedCount > 0) {
+        Swal.fire({
+          icon: "success",
+          title: "Oops...",
+          text: " product delete  successfully!",
+        });
+      }
+    });
+  };
 
   return (
     <MaxWidth>
@@ -73,13 +91,23 @@ const handleDelete=(id)=>{
                 <td>{food.foodOrigin}</td>
                 <th>
                   <div className="flex gap-5 items-center ">
-                    <button className="btn text-xl  " onClick={()=>{handleUpdate}}>
+                    <button
+                      className="btn text-xl  "
+                      onClick={() => {
+                        handleUpdate;
+                      }}
+                    >
                       <FiEdit></FiEdit>
                     </button>
-                    <button className="btn text-2xl " onClick={()=>{handleDelete}}>
+                    <button
+                      className="btn text-2xl "
+                      onClick={() => {
+                        handleDelete(food._id);
+                      }}
+                    >
                       <MdOutlineDeleteOutline></MdOutlineDeleteOutline>
                     </button>
-                    <button className="btn text-2xl " >
+                    <button className="btn text-2xl ">
                       <AiOutlineEye></AiOutlineEye>
                     </button>
                   </div>
