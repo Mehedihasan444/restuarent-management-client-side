@@ -17,15 +17,15 @@ const Banner = () => {
     <Swiper
       navigation={true}
       modules={[Navigation]}
-      className="mySwiper h-[50vh] sm:h-[80vh]"
+      className="mySwiper h-[50vh] sm:h-screen"
     >
       {data.map((slide) => (
         <SwiperSlide className="relative" key={slide._id}>
           <img
              src={slide.image}
-            className="w-full h-full object-cover"
+            className="w-full h-full"
           />
-          <div className="absolute top-0 left-0 bg-gradient-to-t from-[#000000a8] to- right-0 bottom-0 flex justify-center items-center  ">
+          <div className="absolute top-0 left-0 bg-gradient-to-r from-[#000000a8] to- right-0 bottom-0 flex justify-center items-center  ">
             <div className="space-y-4">
               <h1 className="text-3xl sm:text-6xl font-extrabold text-white text-center">{slide.headingTitle}</h1>
             <p className="text-gray-300 text-center">{slide.shortDescription}</p>

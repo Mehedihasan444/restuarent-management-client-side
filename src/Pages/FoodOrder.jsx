@@ -4,19 +4,18 @@ import useAxios from "../CustomHooks/useAxios";
 import Loading from "../Components/Loading";
 import MaxWidth from "../CustomTags/MaxWidth";
 import useAuth from "../CustomHooks/useAuth";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Swal from "sweetalert2";
 
 const FoodOrder = () => {
   const { foodId } = useParams();
   const axios = useAxios();
   const { user } = useAuth();
-  const [userName, setUserName] = useState(user?.displayName);
-  const [userEmail, setUserEmail] = useState(user?.email);
-  const [foodName, setFoodName] = useState("");
-  const [quantity, setQuantity] = useState(0);
-  const [price, setPrice] = useState(0);
-  const [orderDate, setOrderDate] = useState();
+  const [sellCount, setSellCount] = useState(1);
+  const name = useRef();
+  const Quantity = useRef();
+  const Price = useRef();
+  const date = useRef();
 
   const {
     isPending,
@@ -34,14 +33,27 @@ const FoodOrder = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const userName = user.displayName;
+    const userEmail = user.email;
+    const foodCategory = food.foodCategory;
+    const foodImage = food.foodImage;
+
+    const foodName = name.current.value;
+    const quantity = Quantity.current.value;
+    const price = Price.current.value;
+    const orderDate = date.current.value;
+    setSellCount(sellCount + 1);
 
     const information = {
       foodName,
+      foodImage,
+      foodCategory,
       quantity,
       price,
       orderDate,
       userName,
       userEmail,
+      sellCount,
     };
     // console.log(information);
     axios.post("/user/food-order", information).then((res) => {
@@ -55,7 +67,6 @@ const FoodOrder = () => {
     });
   };
 
- 
   return (
     <div className=" mx-auto p-4 my-20">
       <MaxWidth>
@@ -85,17 +96,16 @@ const FoodOrder = () => {
             </div>
             <div className="mb-4 flex-1">
               <label htmlFor="orderDate" className="block text-gray-600">
-               Order Date
+                Order Date
               </label>
               <input
                 type="date"
                 id="orderDate"
                 className="border rounded-lg py-2 px-3 w-full"
-                  value={orderDate}
-                  onChange={(e) => setOrderDate(e.target.value)}
+                // value={orderDate}
+                ref={date}
               />
             </div>
-            
           </div>
 
           <div className="mb-4">
@@ -119,8 +129,9 @@ const FoodOrder = () => {
               type="text"
               id="foodName"
               className="border rounded-lg py-2 px-3 w-full"
-              value={foodName}
-              onChange={(e) => setFoodName(e.target.value)}
+              defaultValue={food.foodName}
+              readOnly
+              ref={name}
             />
           </div>
 
@@ -133,8 +144,8 @@ const FoodOrder = () => {
                 type="number"
                 id="quantity"
                 className="border rounded-lg py-2 px-3 w-full"
-                value={quantity}
-                onChange={(e) => setQuantity(e.target.value)}
+                // value={quantity}
+                ref={Quantity}
               />
             </div>
 
@@ -146,8 +157,9 @@ const FoodOrder = () => {
                 type="number"
                 id="price"
                 className="border rounded-lg py-2 px-3 w-full"
-                value={price}
-                onChange={(e) => setPrice(e.target.value)}
+                defaultValue={food.price}
+                readOnly
+                ref={Price}
               />
             </div>
           </div>
@@ -155,7 +167,6 @@ const FoodOrder = () => {
           <button
             type="submit"
             className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-lg"
-            
           >
             Placed Order
           </button>

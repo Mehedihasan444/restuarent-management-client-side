@@ -1,11 +1,12 @@
-
+import Lottie from "lottie-react";
+import groovyWalkAnimation from "../lotties/404.json";
 
 const Error = () => {
-    return (
-        <div>
-            <h1 className="text-4xl font-bold text-center">Error</h1>
-        </div>
-    );
+  return (
+    <div className="h-screen w-1/2 mx-auto">
+      <Lottie animationData={groovyWalkAnimation} loop={true} />
+    </div>
+  );
 };
 
 export default Error;

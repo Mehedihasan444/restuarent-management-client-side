@@ -52,9 +52,21 @@ const MyOrders = () => {
             {orders?.map((order) => (
               <tr key={order._id}>
                 <td>
+                  
                   <div className="flex items-center space-x-3">
+                    <div className="avatar">
+                      <div className="mask mask-squircle w-12 h-12">
+                        <img
+                          src={order.foodImage}
+                          alt="Avatar Tailwind CSS Component"
+                        />
+                      </div>
+                    </div>
                     <div>
                       <div className="font-bold">{order.foodName}</div>
+                      <div className="text-sm opacity-50">
+                        {order.foodCategory}
+                      </div>
                     </div>
                   </div>
                 </td>

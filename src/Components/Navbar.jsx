@@ -4,6 +4,7 @@ import { FaUserCircle } from "react-icons/fa";
 import { HiMiniBars3CenterLeft } from "react-icons/hi2";
 import useAuth from "../CustomHooks/useAuth";
 import { useState } from "react";
+import logo from "../assets/logo.png"
 const Navbar = () => {
   const { user,LogOut } = useAuth();
   const [toggle, setToggle] = useState(false);
@@ -14,7 +15,7 @@ const Navbar = () => {
           <div className="flex-1 flex justify-between items-center">
             <div className="  flex-1">
               <div className="hidden sm:block">
-                <a className="btn btn-ghost normal-case text-xl">daisyUI</a>
+                <a href="/" className=" "><img src={logo} alt="" className="w-16" /></a>
               </div>
               <div className="relative sm:hidden">
                 <div className="btn btn-ghost normal-case p-0">

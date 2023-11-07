@@ -4,9 +4,9 @@
     background-color: rgba(255, 255, 255, 0.5);
     right:10px;
     padding: 30px;
+    border-radius: 50px;
     color: #000 !important;
     fill: black !important;
     stroke: black !important;
-    /* color: #000000a4; */
 }
 
