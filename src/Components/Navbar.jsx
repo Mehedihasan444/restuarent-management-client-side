@@ -5,9 +5,13 @@ import { HiMiniBars3CenterLeft } from "react-icons/hi2";
 import useAuth from "../CustomHooks/useAuth";
 import { useState } from "react";
 import logo from "../assets/logo.png"
+import "./styles.css";
 const Navbar = () => {
   const { user,LogOut } = useAuth();
   const [toggle, setToggle] = useState(false);
+
+
+
   return (
     <div className=" bg-slate-100 shadow-md">
       <MaxWidth>
@@ -52,7 +56,7 @@ const Navbar = () => {
               {/* {*flex gap-5 items-center *} */}
               <ul className="menu menu-horizontal gap-3">
                 <li>
-                  <NavLink to="/" className="">
+                  <NavLink to="/" className="nav-link" >
                     Home
                   </NavLink>
                 </li>
