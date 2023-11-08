@@ -4,7 +4,7 @@ import H1Tag from '../../CustomTags/H1Tag';
 const LososVegetables = () => {
     return (
         <div>
-            <div className="max-w-7xl mx-auto flex justify-between items-center gap-5">
+            <div className="max-w-7xl mx-auto space-y-3 text-justify px-5 sm:flex justify-between items-center gap-5">
           <div className="flex-1">
             <img
               src="https://savory.qodeinteractive.com/wp-content/uploads/2016/10/white-home-img4.jpg"

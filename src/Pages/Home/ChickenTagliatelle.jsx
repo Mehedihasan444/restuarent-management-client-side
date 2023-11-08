@@ -4,7 +4,7 @@ import H1Tag from '../../CustomTags/H1Tag';
 const ChickenTagliatelle = () => {
     return (
         <div>
-             <div className="max-w-7xl mx-auto flex justify-between items-center gap-5">
+             <div className="max-w-7xl mx-auto px-5 text-justify space-y-3 sm:flex justify-between items-center gap-5">
           <div className="flex-1 space-y-4">
             <p className="">TASTY AND CRUNCHY</p>
             <H1Tag>Chicken Tagliatelle</H1Tag>

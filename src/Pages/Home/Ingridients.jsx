@@ -4,8 +4,8 @@ import H1Tag from '../../CustomTags/H1Tag';
 const Ingridients = () => {
     return (
         <div>
-            <div className="flex justify-between  items-center gap-5 bg-[#ebebeb] py-16">
-        <div className="max-w-7xl mx-auto sm:flex justify-between items-center gap-5">
+            <div className="flex justify-between text-justify px-5  items-center gap-5 bg-[#ebebeb] py-16">
+        <div className="max-w-7xl mx-auto space-y-3  sm:flex justify-between items-center gap-5">
           <div className="flex-1 space-y-4">
             <p className="">TASTY AND CRUNCHY</p>
             <H1Tag>INGREDIENTS</H1Tag>

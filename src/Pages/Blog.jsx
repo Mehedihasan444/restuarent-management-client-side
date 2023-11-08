@@ -4,7 +4,7 @@ import MaxWidth from "../CustomTags/MaxWidth";
 const Blog = () => {
   return (
     <MaxWidth >
-        <div className="space-y-5 my-10">
+        <div className="space-y-5 my-10 px-5 text-justify">
             <div className="space-y-3">
         <H1Tag>1. What is One way data binding?</H1Tag>
         <div className="">

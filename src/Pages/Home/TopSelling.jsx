@@ -31,20 +31,52 @@ const TopSelling = () => {
     <MaxWidth>
       <div className="mt-16 h-[90vh]">
         <div className="flex justify-between items-center">
-        <H1Tag>Top Selling Foods</H1Tag>
-        <Link to="/all-foods"><button className="btn btn-accent text-white">See All</button></Link>
+          <H1Tag>Top Selling Foods</H1Tag>
+          <Link to="/all-foods">
+            <button className="btn btn-accent text-white hidden sm:flex">See All</button>
+          </Link>
         </div>
-      <div className="my-5">
-        <Swiper navigation={true} modules={[Navigation]} slidesPerView={4} spaceBetween={30} className="mySwiper">
-          {orders.map((order) => (
-            <SwiperSlide key={order._id}>
-              <OrderCard order={order}></OrderCard>
-            </SwiperSlide>
-          ))}
-        </Swiper>
+        <div className="my-5">
+          <Swiper
+            navigation={true}
+            modules={[Navigation]}
+            
+            spaceBetween={30}
+            breakpoints={{
+              // when window width is >= 576px
+              // 576: {
+              //   width: 576,
+              //   slidesPerView: 2,
+              // },
+              // when window width is >= 640px
+              640: {
+                width: 640,
+                slidesPerView: 2,
+              },
+              // when window width is >= 1024px
+              768: {
+                width: 768,
+                slidesPerView: 2.5,
+              },
+              // when window width is >= 1024px
+              1024: {
+                width: 1024,
+                slidesPerView: 4,
+              },
+            }}
+            className="mySwiper"
+          >
+            {orders.map((order) => (
+              <SwiperSlide key={order._id}>
+                <OrderCard order={order}></OrderCard>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
+        <Link to="/all-foods" className="flex justify-center items-center">
+            <button className="btn btn-accent text-white sm:hidden ">See All</button>
+          </Link>
       </div>
-      </div>
-      
     </MaxWidth>
   );
 };
