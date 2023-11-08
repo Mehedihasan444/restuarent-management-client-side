@@ -29,14 +29,14 @@ const TopSelling = () => {
 
   return (
     <MaxWidth>
-      <div className="mt-16 h-[90vh]">
+      <div className="my-16 sm:h-[90vh] px-5">
         <div className="flex justify-between items-center">
           <H1Tag>Top Selling Foods</H1Tag>
           <Link to="/all-foods">
             <button className="btn btn-accent text-white hidden sm:flex">See All</button>
           </Link>
         </div>
-        <div className="my-5">
+        <div className="my-5 ">
           <Swiper
             navigation={true}
             modules={[Navigation]}
@@ -64,10 +64,10 @@ const TopSelling = () => {
                 slidesPerView: 4,
               },
             }}
-            className="mySwiper"
+            className="mySwiper "
           >
             {orders.map((order) => (
-              <SwiperSlide key={order._id}>
+              <SwiperSlide key={order._id} >
                 <OrderCard order={order}></OrderCard>
               </SwiperSlide>
             ))}
