@@ -10,7 +10,7 @@ const FoodGallary = () => {
     fetch("./FoodGallary.json")
     .then(data=>data.json())
     .then((res) => setData(res));
-    console.log(data);
+    // console.log(data);
   }, [ data]);
   return (
     <div className="mt-10">

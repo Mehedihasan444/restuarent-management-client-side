@@ -19,8 +19,8 @@ const TopSelling = () => {
   const { isPending, data: orders } = useQuery({
     queryKey: ["orders"],
     queryFn: async () => {
-      const res = await axios.get(`/food/orders`);
-      // console.log(res.data);
+      const res = await axios.get(`/foods/desc`);
+      console.log(res.data);
       return res.data;
     },
   });
@@ -33,14 +33,15 @@ const TopSelling = () => {
         <div className="flex justify-between items-center">
           <H1Tag>Top Selling Foods</H1Tag>
           <Link to="/all-foods">
-            <button className="btn btn-accent text-white hidden sm:flex">See All</button>
+            <button className="btn btn-accent text-white hidden sm:flex">
+              See All
+            </button>
           </Link>
         </div>
         <div className="my-5 ">
           <Swiper
             navigation={true}
             modules={[Navigation]}
-            
             spaceBetween={30}
             breakpoints={{
               // when window width is >= 576px
@@ -66,16 +67,18 @@ const TopSelling = () => {
             }}
             className="mySwiper "
           >
-            {orders.map((order) => (
-              <SwiperSlide key={order._id} >
+            {orders?.map((order) => (
+              <SwiperSlide key={order._id}>
                 <OrderCard order={order}></OrderCard>
               </SwiperSlide>
             ))}
           </Swiper>
         </div>
         <Link to="/all-foods" className="flex justify-center items-center">
-            <button className="btn btn-accent text-white sm:hidden ">See All</button>
-          </Link>
+          <button className="btn btn-accent text-white sm:hidden ">
+            See All
+          </button>
+        </Link>
       </div>
     </MaxWidth>
   );

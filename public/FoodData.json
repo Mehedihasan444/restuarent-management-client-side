@@ -8,7 +8,8 @@
     "foodOrigin": "Italy",
     "shortDescription": "Delicious pasta dish made with eggs, cheese, pancetta, and black pepper.",
     "userName": "Mehedi Hasan",
-    "userEmail": "mehedihasan67705251@gmail.com"
+    "userEmail": "mehedihasan67705251@gmail.com",
+    "sellCount":0
   },
   {
     "foodName": "Sushi Platter",
@@ -19,7 +20,8 @@
     "foodOrigin": "Japan",
     "shortDescription": "A variety of fresh sushi rolls and sashimi for sushi lovers.",
     "userName": "Alice Smith",
-    "userEmail": "mehedihasan67705251@gmail.com"
+    "userEmail": "mehedihasan67705251@gmail.com",
+    "sellCount":0
   },
   {
     "foodName": "Taco Supreme",
@@ -30,7 +32,8 @@
     "foodOrigin": "Mexico",
     "shortDescription": "Crunchy tacos filled with seasoned beef, lettuce, cheese, and sour cream.",
     "userName": "Bob Johnson",
-    "userEmail": "mehedihasan67705251@gmail.com"
+    "userEmail": "mehedihasan67705251@gmail.com",
+    "sellCount":0
   },
   {
     "foodName": "Chicken Alfredo",
@@ -41,7 +44,8 @@
     "foodOrigin": "Italy",
     "shortDescription": "Creamy pasta dish with grilled chicken and Parmesan cheese.",
     "userName": "Emily Wilson",
-    "userEmail": "emily@example.com"
+    "userEmail": "emily@example.com",
+    "sellCount":0
   },
   {
     "foodName": "Mango Lassi",
@@ -52,7 +56,8 @@
     "foodOrigin": "India",
     "shortDescription": "Refreshing Indian drink made with yogurt and ripe mangoes.",
     "userName": "Michael Lee",
-    "userEmail": "michael@example.com"
+    "userEmail": "michael@example.com",
+    "sellCount":0
   },
   {
     "foodName": "Caesar Salad",
@@ -63,7 +68,8 @@
     "foodOrigin": "USA",
     "shortDescription": "Classic salad with romaine lettuce, croutons, Parmesan cheese, and Caesar dressing.",
     "userName": "Sarah Davis",
-    "userEmail": "sarah@example.com"
+    "userEmail": "sarah@example.com",
+    "sellCount":0
   },
   {
     "foodName": "Sushi Burrito",
@@ -74,7 +80,8 @@
     "foodOrigin": "Japan",
     "shortDescription": "Giant sushi roll wrapped in seaweed with various fillings.",
     "userName": "Daniel Brown",
-    "userEmail": "daniel@example.com"
+    "userEmail": "daniel@example.com",
+    "sellCount":0
   },
   {
     "foodName": "Tiramisu",
@@ -85,7 +92,8 @@
     "foodOrigin": "Italy",
     "shortDescription": "Classic Italian dessert made with layers of coffee-soaked ladyfingers and mascarpone cheese.",
     "userName": "Olivia Garcia",
-    "userEmail": "olivia@example.com"
+    "userEmail": "olivia@example.com",
+    "sellCount":0
   },
   {
     "foodName": "Lamb Biryani",
@@ -96,7 +104,8 @@
     "foodOrigin": "India",
     "shortDescription": "Flavorful Indian rice dish with tender lamb, aromatic spices, and basmati rice.",
     "userName": "William Anderson",
-    "userEmail": "william@example.com"
+    "userEmail": "william@example.com",
+    "sellCount":0
   },
   {
     "foodName": "Margarita Pizza",
@@ -107,7 +116,8 @@
     "foodOrigin": "Italy",
     "shortDescription": "Classic Italian pizza with tomato sauce, mozzarella cheese, and fresh basil.",
     "userName": "Ava Taylor",
-    "userEmail": "ava@example.com"
+    "userEmail": "ava@example.com",
+    "sellCount":0
   },
   {
     "foodName": "Spaghetti Carbonara",
@@ -118,7 +128,8 @@
     "foodOrigin": "Italy",
     "shortDescription": "Delicious pasta dish made with eggs, cheese, pancetta, and black pepper.",
     "userName": "Mehedi Hasan",
-    "userEmail": "mehedihasan67705251@gmail.com"
+    "userEmail": "mehedihasan67705251@gmail.com",
+    "sellCount":0
   },
   {
     "foodName": "Sushi Platter",
@@ -129,7 +140,8 @@
     "foodOrigin": "Japan",
     "shortDescription": "A variety of fresh sushi rolls and sashimi for sushi lovers.",
     "userName": "Mehedi Hasan",
-    "userEmail": "mehedihasan67705251@gmail.com"
+    "userEmail": "mehedihasan67705251@gmail.com",
+    "sellCount":0
   },
   {
     "foodName": "Taco Supreme",
@@ -140,7 +152,8 @@
     "foodOrigin": "Mexico",
     "shortDescription": "Crunchy tacos filled with seasoned beef, lettuce, cheese, and sour cream.",
     "userName": "Mehedi Hasan",
-    "userEmail": "mehedihasan67705251@gmail.com"
+    "userEmail": "mehedihasan67705251@gmail.com",
+    "sellCount":0
   },
   {
     "foodName": "Chicken Alfredo",
@@ -151,7 +164,8 @@
     "foodOrigin": "Italy",
     "shortDescription": "Creamy pasta dish with grilled chicken and Parmesan cheese.",
     "userName": "Mehedi Hasan",
-    "userEmail": "mehedihasan67705251@gmail.com"
+    "userEmail": "mehedihasan67705251@gmail.com",
+    "sellCount":0
   },
   {
     "foodName": "Mango Lassi",
@@ -162,7 +176,8 @@
     "foodOrigin": "India",
     "shortDescription": "Refreshing Indian drink made with yogurt and ripe mangoes.",
     "userName": "Mehedi Hasan",
-    "userEmail": "mehedihasan67705251@gmail.com"
+    "userEmail": "mehedihasan67705251@gmail.com",
+    "sellCount":0
   },
   {
     "foodName": "Caesar Salad",
@@ -173,7 +188,8 @@
     "foodOrigin": "USA",
     "shortDescription": "Classic salad with romaine lettuce, croutons, Parmesan cheese, and Caesar dressing.",
     "userName": "Mehedi Hasan",
-    "userEmail": "mehedihasan67705251@gmail.com"
+    "userEmail": "mehedihasan67705251@gmail.com",
+    "sellCount":0
   },
   {
     "foodName": "Sushi Burrito",
@@ -184,7 +200,8 @@
     "foodOrigin": "Japan",
     "shortDescription": "Giant sushi roll wrapped in seaweed with various fillings.",
     "userName": "Mehedi Hasan",
-    "userEmail": "mehedihasan67705251@gmail.com"
+    "userEmail": "mehedihasan67705251@gmail.com",
+    "sellCount":0
   },
   {
     "foodName": "Tiramisu",
@@ -195,7 +212,8 @@
     "foodOrigin": "Italy",
     "shortDescription": "Classic Italian dessert made with layers of coffee-soaked ladyfingers and mascarpone cheese.",
     "userName": "Mehedi Hasan",
-    "userEmail": "mehedihasan67705251@gmail.com"
+    "userEmail": "mehedihasan67705251@gmail.com",
+    "sellCount":0
   },
   {
     "foodName": "Lamb Biryani",
@@ -206,7 +224,8 @@
     "foodOrigin": "India",
     "shortDescription": "Flavorful Indian rice dish with tender lamb, aromatic spices, and basmati rice.",
     "userName": "Mehedi Hasan",
-    "userEmail": "mehedihasan67705251@gmail.com"
+    "userEmail": "mehedihasan67705251@gmail.com",
+    "sellCount":0
   },
   {
     "foodName": "Margarita Pizza",
@@ -217,7 +236,8 @@
     "foodOrigin": "Italy",
     "shortDescription": "Classic Italian pizza with tomato sauce, mozzarella cheese, and fresh basil.",
     "userName": "Mehedi Hasan",
-    "userEmail": "mehedihasan67705251@gmail.com"
+    "userEmail": "mehedihasan67705251@gmail.com",
+    "sellCount":0
   },
   {
     "foodName": "Pad Thai",
@@ -228,7 +248,8 @@
     "foodOrigin": "Thailand",
     "shortDescription": "Stir-fried rice noodles with tofu, shrimp, peanuts, and vegetables in a tangy sauce.",
     "userName": "Mehedi Hasan",
-    "userEmail": "mehedihasan67705251@gmail.com"
+    "userEmail": "mehedihasan67705251@gmail.com",
+    "sellCount":0
   },
   {
     "foodName": "Creme Brulee",
@@ -239,7 +260,8 @@
     "foodOrigin": "France",
     "shortDescription": "Creamy custard dessert with a caramelized sugar top.",
     "userName": "Mehedi Hasan",
-    "userEmail": "mehedihasan67705251@gmail.com"
+    "userEmail": "mehedihasan67705251@gmail.com",
+    "sellCount":0
   },
   {
     "foodName": "Beef Tacos",
@@ -250,7 +272,8 @@
     "foodOrigin": "Mexico",
     "shortDescription": "Soft tortillas filled with seasoned ground beef, lettuce, cheese, and salsa.",
     "userName": "Mehedi Hasan",
-    "userEmail": "mehedihasan67705251@gmail.com"
+    "userEmail": "mehedihasan67705251@gmail.com",
+    "sellCount":0
   },
   {
     "foodName": "Pho Noodle Soup",
@@ -261,7 +284,8 @@
     "foodOrigin": "Vietnam",
     "shortDescription": "Vietnamese soup with beef or chicken, rice noodles, and fresh herbs.",
     "userName": "Mehedi Hasan",
-    "userEmail": "mehedihasan67705251@gmail.com"
+    "userEmail": "mehedihasan67705251@gmail.com",
+    "sellCount":0
   },
   {
     "foodName": "Chocolate Fondue",
@@ -272,7 +296,8 @@
     "foodOrigin": "Switzerland",
     "shortDescription": "Melted chocolate for dipping fruits, marshmallows, and more.",
     "userName": "Mehedi Hasan",
-    "userEmail": "mehedihasan67705251@gmail.com"
+    "userEmail": "mehedihasan67705251@gmail.com",
+    "sellCount":0
   },
   {
     "foodName": "Mushroom Risotto",
@@ -283,7 +308,8 @@
     "foodOrigin": "Italy",
     "shortDescription": "Creamy rice dish with mushrooms, Parmesan cheese, and white wine.",
     "userName": "Mehedi Hasan",
-    "userEmail": "mehedihasan67705251@gmail.com"
+    "userEmail": "mehedihasan67705251@gmail.com",
+    "sellCount":0
   },
   {
     "foodName": "Lobster Bisque",
@@ -294,7 +320,8 @@
     "foodOrigin": "France",
     "shortDescription": "Creamy soup made with lobster, sherry, and cream.",
     "userName": "Mehedi Hasan",
-    "userEmail": "mehedihasan67705251@gmail.com"
+    "userEmail": "mehedihasan67705251@gmail.com",
+    "sellCount":0
   },
   {
     "foodName": "Margherita Pizza",
@@ -305,7 +332,8 @@
     "foodOrigin": "Italy",
     "shortDescription": "Classic pizza with tomato sauce, mozzarella, fresh basil, and olive oil.",
     "userName": "Mehedi Hasan",
-    "userEmail": "mehedihasan67705251@gmail.com"
+    "userEmail": "mehedihasan67705251@gmail.com",
+    "sellCount":0
   },
   {
     "foodName": "Sushi Rolls",
@@ -316,7 +344,8 @@
     "foodOrigin": "Japan",
     "shortDescription": "Assorted sushi rolls with various fillings and toppings.",
     "userName": "Mehedi Hasan",
-    "userEmail": "mehedihasan67705251@gmail.com"
+    "userEmail": "mehedihasan67705251@gmail.com",
+    "sellCount":0
   },
   {
     "foodName": "Burger and Fries",
@@ -327,7 +356,8 @@
     "foodOrigin": "USA",
     "shortDescription": "Classic burger with fries on the side.",
     "userName": "Mehedi Hasan",
-    "userEmail": "mehedihasan67705251@gmail.com"
+    "userEmail": "mehedihasan67705251@gmail.com",
+    "sellCount":0
   },
   {
     "foodName": "Chicken Shawarma",
@@ -338,6 +368,7 @@
     "foodOrigin": "Middle East",
     "shortDescription": "Grilled marinated chicken wrapped in pita bread with tahini and vegetables.",
     "userName": "Mehedi Hasan",
-    "userEmail": "mehedihasan67705251@gmail.com"
+    "userEmail": "mehedihasan67705251@gmail.com",
+    "sellCount":0
   }
 ]

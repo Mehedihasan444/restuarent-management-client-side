@@ -12,6 +12,7 @@ import FoodOrder from "../Pages/FoodOrder";
 import MyFoods from "../Pages/MyFoods";
 import MyOrders from "../Pages/MyOrders";
 import UpdateFood from "../Pages/UpdateFood";
+import PrivateRoute from "./PrivateRoute";
 
 const Routes = createBrowserRouter([
     {
@@ -49,7 +50,7 @@ const Routes = createBrowserRouter([
             },
             {
                 path:"/foodOrder/:foodId",
-                element:<FoodOrder></FoodOrder>
+                element:<PrivateRoute><FoodOrder></FoodOrder></PrivateRoute>
             },
             {
                 path:"/myFoods",

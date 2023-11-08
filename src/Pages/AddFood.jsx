@@ -22,9 +22,9 @@ const AddFood = () => {
   const axios = useAxios();
   const handleSubmit = (e) => {
     e.preventDefault();
-
+const sellCount = 0;
     const information = {
-      foodName,foodImage,foodCategory,quantity,price,foodOrigin,shortDescription,userName,userEmail};
+      foodName,foodImage,foodCategory,quantity,price,foodOrigin,shortDescription,userName,userEmail,sellCount};
     // console.log(information);
     axios
       .post("/user/add-food", information)

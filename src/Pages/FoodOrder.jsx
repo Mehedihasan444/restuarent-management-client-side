@@ -11,17 +11,13 @@ const FoodOrder = () => {
   const { foodId } = useParams();
   const axios = useAxios();
   const { user } = useAuth();
-  const [sellCount, setSellCount] = useState(1);
+  // const [sellCount, setSellCount] = useState(1);
   const name = useRef();
   const Quantity = useRef();
   const Price = useRef();
   const date = useRef();
 
-  const {
-    isPending,
-    error,
-    data: food,
-  } = useQuery({
+  const { isPending, data: food } = useQuery({
     queryKey: ["foodId"],
     queryFn: async () => {
       const res = await axios.get(`/foodDetails/${foodId}`);
@@ -42,7 +38,7 @@ const FoodOrder = () => {
     const quantity = Quantity.current.value;
     const price = Price.current.value;
     const orderDate = date.current.value;
-    setSellCount(sellCount + 1);
+    // setSellCount(sellCount + 1);
 
     const information = {
       foodName,
@@ -53,15 +49,43 @@ const FoodOrder = () => {
       orderDate,
       userName,
       userEmail,
-      sellCount,
     };
     // console.log(information);
+    let updateQuantity;
     axios.post("/user/food-order", information).then((res) => {
-      if (res.data.acknowledged) {
+      updateQuantity = food.quantity - quantity;
+      console.log("updatedQ", updateQuantity);
+      if (quantity == 0) {
         Swal.fire({
-          icon: "success",
+          icon: "warning",
           title: "Oops...",
-          text: "Your order is successfully placed!",
+          text: "Enter quantity!",
+        });
+        return;
+      }
+      if (updateQuantity < 0 || quantity > food.quantity) {
+        Swal.fire({
+          icon: "warning",
+          title: "Oops...",
+          text: "Stock is not available!",
+        });
+        return;
+      }
+      // update quantity
+      let updateSellCount = food.sellCount + 1;
+      console.log("updateSellCount", updateSellCount);
+      const updateQuantityObj = {
+        quantity: updateQuantity,
+        sellCount: updateSellCount,
+      };
+      if (updateQuantity >= 0 && res.data.acknowledged == true) {
+        axios.put(`/foods/${food._id}`, updateQuantityObj).then((res) => {
+          console.log(res.data);
+          Swal.fire({
+            icon: "success",
+            title: "Oops...",
+            text: "Your order is successfully placed!",
+          });
         });
       }
     });
@@ -101,6 +125,7 @@ const FoodOrder = () => {
               <input
                 type="date"
                 id="orderDate"
+                required
                 className="border rounded-lg py-2 px-3 w-full"
                 // value={orderDate}
                 ref={date}
@@ -143,6 +168,7 @@ const FoodOrder = () => {
               <input
                 type="number"
                 id="quantity"
+                required
                 className="border rounded-lg py-2 px-3 w-full"
                 // value={quantity}
                 ref={Quantity}
