@@ -11,7 +11,7 @@ const MyOrders = () => {
   const { isPending, data: orders } = useQuery({
     queryKey: ["orders", user],
     queryFn: async () => {
-      const res = await axios.get(`/user/food-orders/${user.email}`);
+      const res = await axios.get(`/user/food-orders/${user.email}`,{withCredentials: true});
       return res.data;
     },
   });

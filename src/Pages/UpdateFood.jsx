@@ -48,15 +48,14 @@ const UpdateFood = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const foodName=name.current.value;
-    const foodImage=image.current.value;
-    const foodCategory=category.current.value;
-    const quantity=Quantity.current.value;
-    const price=Price.current.value;
-    const foodOrigin=origin.current.value;
-    const shortDescription=ShortDescription.current.value;
+    const foodName = name.current.value;
+    const foodImage = image.current.value;
+    const foodCategory = category.current.value;
+    const quantity = Quantity.current.value;
+    const price = Price.current.value;
+    const foodOrigin = origin.current.value;
+    const shortDescription = ShortDescription.current.value;
 
- 
     const information = {
       foodName,
       foodImage,
@@ -127,7 +126,8 @@ const UpdateFood = () => {
               id="foodName"
               className="border rounded-lg py-2 px-3 w-full"
               defaultValue={foods.SingleResult.foodName}
-ref={name}            />
+              ref={name}
+            />
           </div>
           <div className="flex gap-5 items-center">
             <div className="mb-4 flex-1">
@@ -138,8 +138,8 @@ ref={name}            />
                 id="foodCategory"
                 className="border rounded-lg py-2 px-3 w-full"
                 defaultValue={foods.SingleResult.foodCategory}
-ref={category}
->
+                ref={category}
+              >
                 <option value="">Select a category</option>
                 {popularFoodCategories.map((category) => (
                   <option key={category} value={category}>
@@ -150,15 +150,15 @@ ref={category}
             </div>
             <div className="mb-4 flex-1">
               <label htmlFor="foodImage" className="block text-gray-600">
-                Food Image
+                Food Image URL
               </label>
               <input
-                type="file"
+                type="url"
                 id="foodImage"
                 className="border rounded-lg py-2 px-3 w-full"
-                // defaultValue={foods.SingleResult.foodImage}
-ref={image}
-/>
+                defaultValue={foods.SingleResult.foodImage}
+                ref={image}
+              />
             </div>
           </div>
 
@@ -172,8 +172,8 @@ ref={image}
                 id="quantity"
                 className="border rounded-lg py-2 px-3 w-full"
                 defaultValue={foods.SingleResult.quantity}
-ref={Quantity}
-/>
+                ref={Quantity}
+              />
             </div>
 
             <div className="mb-4 flex-1">
@@ -185,8 +185,8 @@ ref={Quantity}
                 id="price"
                 className="border rounded-lg py-2 px-3 w-full"
                 defaultValue={foods.SingleResult.price}
-ref={Price}
-/>
+                ref={Price}
+              />
             </div>
           </div>
 

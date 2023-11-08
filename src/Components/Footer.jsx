@@ -1,52 +1,17 @@
 import MaxWidth from "../CustomTags/MaxWidth";
-import logo from "../assets/logo.png"
+import logo from "../assets/logo.png";
 const Footer = () => {
   return (
     <div className=" bg-slate-100 ">
       <MaxWidth>
         <footer className="footer p-10 text-base-content">
           <aside>
-           <img src={logo} alt="" className="w-24" />
+            <img src={logo} alt="" className="w-24" />
             <p>
-              ACME Industries Ltd.
+              RM Industries Ltd.
               <br />
-              Providing reliable tech since 1992
+              Providing reliable foods since 2020
             </p>
-          </aside>
-          <nav>
-            <header className="footer-title">Services</header>
-            <a className="link link-hover">Branding</a>
-            <a className="link link-hover">Design</a>
-            <a className="link link-hover">Marketing</a>
-            <a className="link link-hover">Advertisement</a>
-          </nav>
-          <nav>
-            <header className="footer-title">Company</header>
-            <a className="link link-hover">About us</a>
-            <a className="link link-hover">Contact</a>
-            <a className="link link-hover">Jobs</a>
-            <a className="link link-hover">Press kit</a>
-          </nav>
-          <nav>
-            <form >
-              <header className="footer-title">Newsletter</header>
-              <fieldset className="form-control sm:w-80">
-                <label className="label">
-                  <span className="label-text">Enter your email address</span>
-                </label>
-                <div className="relative">
-                  <input
-                    type="text"
-                    placeholder="username@site.com"
-                    className="input input-bordered w-full pr-20"
-                  />
-                  <button className="btn btn-accent text-white absolute top-0 right-0 rounded-l-none">
-                    Subscribe
-                  </button>
-                </div>
-              </fieldset>
-            </form>
-            <header className="footer-title">SOCIAL</header>
             <div className="grid grid-flow-col gap-4">
               <a>
                 <svg
@@ -82,8 +47,43 @@ const Footer = () => {
                 </svg>
               </a>
             </div>
+          </aside>
+
+          <nav>
+            <header className="footer-title">Company</header>
+            <a className="link link-hover">About us</a>
+            <a className="link link-hover">Contact</a>
+            <a className="link link-hover" href="/blog">Blog</a>
+          </nav>
+          <nav>
+            <header className="footer-title">Legal</header>
+            <a className="link link-hover">Terms of use</a>
+            <a className="link link-hover">Privacy policy</a>
+            <a className="link link-hover">Cookie policy</a>
+          </nav>
+          <nav>
+            <form>
+              <header className="footer-title">Newsletter</header>
+              <fieldset className="form-control sm:w-80">
+                <label className="label">
+                  <span className="label-text">Enter your email address</span>
+                </label>
+                <div className="relative">
+                  <input
+                    type="text"
+                    placeholder="username@site.com"
+                    className="input input-bordered w-full pr-20"
+                  />
+                  <button className="btn btn-accent text-white absolute top-0 right-0 rounded-l-none">
+                    Subscribe
+                  </button>
+                </div>
+              </fieldset>
+            </form>
           </nav>
         </footer>
+        <hr />
+        <p className="text-center pb-5">All copy right reserved to RM Industries Ltd</p>
       </MaxWidth>
     </div>
   );

@@ -1,8 +1,10 @@
-# React + Vite
+## RM Industries LTD
+# Live link: https://restaurant-management-6fce7.web.app/
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Five features:
+- user can login logout
+- user can add foods and order foods
+- without login user can not add foods
+- without login user can not order food
+- Data protected with jwt token 

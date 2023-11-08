@@ -5,11 +5,13 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
 import { FcGoogle } from "react-icons/fc";
 import useAuth from "../CustomHooks/useAuth";
-import axios from "axios";
+import useAxios from "../CustomHooks/useAxios";
+import Swal from "sweetalert2";
+
 
 const LogIn = () => {
-  const { LogIn, LoginWithGoogle } = useAuth();
-
+  const { LogIn, LoginWithGoogle,user } = useAuth();
+const axios=useAxios()
   const [resisterError, setResisterError] = useState("");
   const [resisterSuccess, setResisterSuccess] = useState("");
   const [showPassword, setShowPassword] = useState(false);
@@ -18,7 +20,7 @@ const LogIn = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const handleLogin = (e) => {
+  const handleLogIn = (e) => {
     e.preventDefault();
 
     const email = e.target.Email.value;
@@ -36,19 +38,21 @@ const LogIn = () => {
         // navigate(location?.state ? location.state : "/");
         const CurrentUser = { email };
         // get access token
-        // axios
-        //   .post("http://localhost:5000/jwt", CurrentUser, {
-        //     withCredentials: true,
-        //   })
-        //   .then((res) => {
-        //     console.log(res.data);
-        //     if (res.data.success) {
-        //       navigate(location?.state ? location.state : "/");
-        //     }
-        //   });
+        axios
+          .post("auth/access-token", CurrentUser)
+          .then((res) => {
+            console.log(res.data);
+            if (res.data.success) {
+              navigate(location?.state ? location.state : "/");
+            }
+          });
       })
       .catch((error) => {
-        // toast.error("Login failed!.");
+        Swal.fire({
+          icon: "warning",
+          title: "Oops...",
+          text: "Login failed!",
+        });
         console.log(error.message);
         setResisterError(error.message);
       });
@@ -59,6 +63,7 @@ const LogIn = () => {
         console.log(result.user);
         // toast.success("Successfully Login!");
         navigate(location?.state ? location.state : "/");
+      
       })
       .catch((error) => {
         // toast.error("Login failed!.");
@@ -79,7 +84,7 @@ const LogIn = () => {
               Sign In
             </h3>
           </div>
-          <form onSubmit={handleLogin}>
+          <form onSubmit={handleLogIn}>
             <div className="flex flex-col gap-4 p-6">
               <div className="relative h-11 w-full min-w-[200px]">
                 <input
@@ -170,7 +175,7 @@ const LogIn = () => {
               </p>
             </div>
           </form>
-          <div className="flex justify-center items-center btn  my-2 mx-7 ">
+          <div className="flex justify-center items-center btn bg-white border border-2  my-2 mx-7 ">
               <FcGoogle
               className="text-black text-4xl  cursor-pointer"
               onClick={handleGoogleLogin}

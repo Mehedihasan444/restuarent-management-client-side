@@ -5,7 +5,7 @@
     "shortDescription": "Discover the finest flavors and exquisite dishes in town.",
     "button": {
       "text": "View All Menus",
-      "link": "/menus"
+      "link": "/all-foods"
     }
   },
   {
@@ -14,7 +14,7 @@
     "shortDescription": "Indulge in a world of delectable dishes created with passion.",
     "button": {
       "text": "View All Menus",
-      "link": "/menus"
+      "link": "/all-foods"
     }
   },
   {
@@ -23,7 +23,7 @@
     "shortDescription": "Experience our chef's signature creations that are second to none.",
     "button": {
       "text": "View All Menus",
-      "link": "/menus"
+      "link": "/all-foods"
     }
   },
   {
@@ -32,7 +32,7 @@
     "shortDescription": "Enjoy breathtaking views while savoring delectable dishes.",
     "button": {
       "text": "View All Menus",
-      "link": "/menus"
+      "link": "/all-foods"
     }
   },
   {
@@ -41,7 +41,7 @@
     "shortDescription": "We aim to provide you with a memorable and delightful dining journey.",
     "button": {
       "text": "View All Menus",
-      "link": "/menus"
+      "link": "/all-foods"
     }
   }
 ]

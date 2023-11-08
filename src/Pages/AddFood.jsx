@@ -12,7 +12,7 @@ const AddFood = () => {
   const [userName, setUserName] = useState(user?.displayName);
   const [userEmail, setUserEmail] = useState(user?.email);
   const [foodName, setFoodName] = useState("");
-  const [foodImage, setFoodImage] = useState("");
+  const [foodImage, setFoodImage] = useState();
   const [foodCategory, setFoodCategory] = useState("");
   const [quantity, setQuantity] = useState(0);
   const [price, setPrice] = useState(0);
@@ -22,6 +22,7 @@ const AddFood = () => {
   const axios = useAxios();
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log(foodImage);
 const sellCount = 0;
     const information = {
       foodName,foodImage,foodCategory,quantity,price,foodOrigin,shortDescription,userName,userEmail,sellCount};
@@ -110,10 +111,10 @@ const sellCount = 0;
             </div>
             <div className="mb-4 flex-1">
               <label htmlFor="foodImage" className="block text-gray-600">
-                Food Image
+                Food Image URL
               </label>
               <input
-                type="file"
+                type="url"
                 id="foodImage"
                 className="border rounded-lg py-2 px-3 w-full"
                 value={foodImage}

@@ -20,7 +20,7 @@ const TopSelling = () => {
     queryKey: ["orders"],
     queryFn: async () => {
       const res = await axios.get(`/foods/desc`);
-      console.log(res.data);
+      // console.log(res.data);
       return res.data;
     },
   });
