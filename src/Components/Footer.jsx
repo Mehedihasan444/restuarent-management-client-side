@@ -12,7 +12,50 @@ const Footer = () => {
               <br />
               Providing reliable foods since 2020
             </p>
-            <div className="grid grid-flow-col gap-4">
+            <address>
+            Menlo Park, California, United States
+            </address>
+          </aside>
+
+          <nav>
+            <header className="footer-title">Company</header>
+            <a className="link link-hover">About us</a>
+            <a className="link link-hover">Contact</a>
+            <a className="link link-hover" href="/blog">Blog</a>
+          </nav>
+          <nav>
+            <header className="footer-title">Social links</header>
+            <a className="link link-hover">Facebook</a>
+            <a className="link link-hover">Twiter</a>
+            <a className="link link-hover">Linkedin</a>
+            <a className="link link-hover">Instagram</a>
+          </nav>
+          <nav>
+            <header className="footer-title">Legal</header>
+            <a className="link link-hover">Terms of use</a>
+            <a className="link link-hover">Privacy policy</a>
+            <a className="link link-hover">Cookie policy</a>
+          </nav>
+          <nav>
+            <form>
+              <header className="footer-title">Newsletter</header>
+              <fieldset className="form-control sm:w-80">
+                <label className="label">
+                  <span className="label-text">Enter your email address</span>
+                </label>
+                <div className="relative">
+                  <input
+                    type="text"
+                    placeholder="username@site.com"
+                    className="input input-bordered w-full pr-20"
+                  />
+                  <button className="btn btn-accent text-white absolute top-0 right-0 rounded-l-none">
+                    Subscribe
+                  </button>
+                </div>
+              </fieldset>
+            </form>
+            <div className="grid grid-flow-col gap-4 mt-5">
               <a>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -47,39 +90,6 @@ const Footer = () => {
                 </svg>
               </a>
             </div>
-          </aside>
-
-          <nav>
-            <header className="footer-title">Company</header>
-            <a className="link link-hover">About us</a>
-            <a className="link link-hover">Contact</a>
-            <a className="link link-hover" href="/blog">Blog</a>
-          </nav>
-          <nav>
-            <header className="footer-title">Legal</header>
-            <a className="link link-hover">Terms of use</a>
-            <a className="link link-hover">Privacy policy</a>
-            <a className="link link-hover">Cookie policy</a>
-          </nav>
-          <nav>
-            <form>
-              <header className="footer-title">Newsletter</header>
-              <fieldset className="form-control sm:w-80">
-                <label className="label">
-                  <span className="label-text">Enter your email address</span>
-                </label>
-                <div className="relative">
-                  <input
-                    type="text"
-                    placeholder="username@site.com"
-                    className="input input-bordered w-full pr-20"
-                  />
-                  <button className="btn btn-accent text-white absolute top-0 right-0 rounded-l-none">
-                    Subscribe
-                  </button>
-                </div>
-              </fieldset>
-            </form>
           </nav>
         </footer>
         <hr />

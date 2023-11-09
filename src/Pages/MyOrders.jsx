@@ -5,18 +5,27 @@ import Loading from "../Components/Loading";
 import MaxWidth from "../CustomTags/MaxWidth";
 import { MdOutlineDeleteOutline } from "react-icons/md";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
+import React, { useEffect, useState } from "react";
 const MyOrders = () => {
   const { user } = useAuth();
   const axios = useAxios();
-  const { isPending, data: orders } = useQuery({
+  const [intervalMs, setIntervalMs] = React.useState(1000)
+  // const [orders,setOrders]=useState()
+  const { isPending, data: orders, isFetching} = useQuery({
     queryKey: ["orders", user],
     queryFn: async () => {
-      const res = await axios.get(`/user/food-orders/${user.email}`,{withCredentials: true});
+      const res = await axios.get(`/user/food-orders/${user.email}`);
       return res.data;
     },
+    refetchInterval: intervalMs,
   });
-  //   console.log(order);
+    // console.log(order);
   if (isPending) return <Loading></Loading>;
+// useEffect(()=>{
+//   axios.get(`/user/food-orders/${user.email}`)
+//   .then(res=>setOrders(res.data))
+// },[axios,user.email])
 
   const handleCancel = async (id) => {
    await axios.delete(`/user/delete-order/${id}`).then((res) =>{
@@ -33,6 +42,10 @@ const MyOrders = () => {
 
   return (
     <MaxWidth>
+      <Helmet>
+        <title>My Orders</title>
+        <link rel="canonical" href="https://www.tacobell.com/" />
+      </Helmet>
       <div className="overflow-x-auto my-10">
         <table className="table">
           {/* head */}

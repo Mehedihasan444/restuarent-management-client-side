@@ -1,9 +1,14 @@
+import { Helmet } from "react-helmet-async";
 import H1Tag from "../CustomTags/H1Tag";
 import MaxWidth from "../CustomTags/MaxWidth";
 
 const Blog = () => {
   return (
     <MaxWidth >
+      <Helmet>
+        <title>Blog</title>
+        <link rel="canonical" href="https://www.tacobell.com/" />
+      </Helmet>
         <div className="space-y-5 my-10 px-5 text-justify">
             <div className="space-y-3">
         <H1Tag>1. What is One way data binding?</H1Tag>

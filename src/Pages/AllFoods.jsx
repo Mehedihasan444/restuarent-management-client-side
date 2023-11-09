@@ -5,7 +5,8 @@ import FoodCard from "../Components/FoodCard";
 import MaxWidth from "../CustomTags/MaxWidth";
 import Loading from "../Components/Loading";
 import { useEffect, useState } from "react";
-import { BsSearch } from 'react-icons/bs';
+import { BsSearch } from "react-icons/bs";
+import { Helmet } from "react-helmet-async";
 const AllFoods = () => {
   const axios = useAxios();
   const [categoryFilter, setCategoryFilter] = useState("");
@@ -14,9 +15,9 @@ const AllFoods = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [data, setData] = useState({});
   const [numberOfPages, setNumberOfPages] = useState(1);
-const [searchValue,setSearchValue] = useState('')
-const [search,setSearch]=useState('')
-  const { data: foods, isPending } = useQuery({
+  const [searchValue, setSearchValue] = useState("");
+  const [search, setSearch] = useState("");
+  const { data: foods, isPending} = useQuery({
     queryKey: [
       "foods",
       sortByPrice,
@@ -24,7 +25,7 @@ const [search,setSearch]=useState('')
       currentPage,
       itemsPerPage,
       numberOfPages,
-      searchValue
+      searchValue,
     ],
     queryFn: async () => {
       const response = await axios.get(
@@ -63,14 +64,18 @@ const [search,setSearch]=useState('')
     }
   };
 
-  const handleSearch=()=>{
-    setSearchValue(search)
+  const handleSearch = () => {
+    setSearchValue(search);
     console.log(search);
-  }
+  };
   // console.log(categoryFilter,sortByPrice);
 
   return (
     <MaxWidth>
+      <Helmet>
+        <title>All Foods</title>
+        <link rel="canonical" href="https://www.tacobell.com/" />
+      </Helmet>
       <div className="block text-center lg:hidden mt-10">
         <H1Tag>All Foods</H1Tag>
       </div>
@@ -85,9 +90,9 @@ const [search,setSearch]=useState('')
               placeholder="Search"
               name="search"
               className="input input-bordered rounded-full  w-80  "
-              onChange={(e)=>setSearch(e.target.value)}
+              onChange={(e) => setSearch(e.target.value)}
             />
-            <div className="absolute top-1/2 right-2 md:right-8 lg:right-4 cursor-pointer">
+            <div className="absolute top-1/2 right-8  lg:right-4 cursor-pointer">
               <BsSearch onClick={handleSearch}></BsSearch>
             </div>
           </div>

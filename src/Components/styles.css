@@ -1,5 +1,9 @@
 .active{
-    background-color: #1dcdbc!important;
+    /* background-color: #1dcdbc!important; */
+    color: #1dcdbc;
+    border-bottom: 3px solid #1dcdbc;
+   /* padding: 10px; */
+   /* color: #ffffff85; */
 }
 /* .focus {
     background-color:blue;  Change the focus outline color 

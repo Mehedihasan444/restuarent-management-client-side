@@ -23,7 +23,12 @@ const Ingridients = () => {
               ingredients, with their unique tastes and textures, inspire
               culinary creativity and bring diverse cuisines to life.
             </p>
+            <div className="">
+               <a href="/all-foods" className="">
+
             <button className="btn btn-accent text-white">View Our Menu</button>
+            </a>
+            </div>
           </div>
           <div className="flex-1">
             <img

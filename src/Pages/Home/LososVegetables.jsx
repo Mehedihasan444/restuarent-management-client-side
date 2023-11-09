@@ -27,7 +27,13 @@ const LososVegetables = () => {
               our Salmon & Vegetables dish is a culinary masterpiece you won't
               want to miss.
             </p>
-            <button className="btn btn-accent">View Our Menu</button>
+            <div className="">
+               <a href="/all-foods" className="">
+
+            <button className="btn btn-accent text-white">View Our Menu</button>
+            </a>
+            </div>
+           
           </div>
         </div>
         </div>

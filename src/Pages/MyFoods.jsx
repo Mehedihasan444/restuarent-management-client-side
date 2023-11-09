@@ -8,18 +8,21 @@ import { AiOutlineEye } from "react-icons/ai";
 import MaxWidth from "../CustomTags/MaxWidth";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
+import React from "react";
 
 const MyFoods = () => {
   const { user } = useAuth();
   const axios = useAxios();
-  const { isPending, data: foods } = useQuery({
+  const [intervalMs, setIntervalMs] = React.useState(1000)
+  const { isPending, data: foods,isFetching } = useQuery({
     queryKey: ["foods", user],
     queryFn: async () => {
       const res = await axios.get(`/user/added-foods?userEmail=${user.email}`);
       // console.log(res.data);
       return res.data;
     },
-    refetchOnReconnect: true,
+    refetchInterval: intervalMs,
   });
   if (isPending) return <Loading></Loading>;
 
@@ -39,6 +42,10 @@ const MyFoods = () => {
 
   return (
     <MaxWidth>
+      <Helmet>
+        <title>My Foods</title>
+        <link rel="canonical" href="https://www.tacobell.com/" />
+      </Helmet>
       <div className="overflow-x-auto my-10">
         <table className="table">
           {/* head */}

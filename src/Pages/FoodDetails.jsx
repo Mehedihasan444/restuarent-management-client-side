@@ -4,6 +4,7 @@ import useAxios from "../CustomHooks/useAxios";
 import { Link, useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import Loading from "../Components/Loading";
+import { Helmet } from "react-helmet-async";
 
 const FoodDetails = () => {
   const axios = useAxios();
@@ -28,6 +29,10 @@ const FoodDetails = () => {
 
   return (
     <div className="max-w-7xl mx-auto my-10">
+      <Helmet>
+        <title>Food Details</title>
+        <link rel="canonical" href="https://www.tacobell.com/" />
+      </Helmet>
       <div className="flex justify-between gap-5">
         <div className="flex-1 border flex justify-center items-center">
           <img src={food.foodImage} alt="" className="w-full" />

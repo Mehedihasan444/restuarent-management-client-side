@@ -7,11 +7,11 @@ import { FcGoogle } from "react-icons/fc";
 import useAuth from "../CustomHooks/useAuth";
 import useAxios from "../CustomHooks/useAxios";
 import Swal from "sweetalert2";
-
+import { Helmet } from "react-helmet-async";
 
 const LogIn = () => {
-  const { LogIn, LoginWithGoogle,user } = useAuth();
-const axios=useAxios()
+  const { LogIn, LoginWithGoogle, user } = useAuth();
+  const axios = useAxios();
   const [resisterError, setResisterError] = useState("");
   const [resisterSuccess, setResisterSuccess] = useState("");
   const [showPassword, setShowPassword] = useState(false);
@@ -33,19 +33,14 @@ const axios=useAxios()
     LogIn(email, password)
       .then((result) => {
         console.log(result.user);
-        // toast.success("Successfully Login!");
-
-        // navigate(location?.state ? location.state : "/");
         const CurrentUser = { email };
         // get access token
-        axios
-          .post("auth/access-token", CurrentUser)
-          .then((res) => {
-            console.log(res.data);
-            if (res.data.success) {
-              navigate(location?.state ? location.state : "/");
-            }
-          });
+        axios.post("auth/access-token", CurrentUser).then((res) => {
+          console.log(res.data);
+          if (res.data.success) {
+            navigate(location?.state ? location.state : "/");
+          }
+        });
       })
       .catch((error) => {
         Swal.fire({
@@ -61,19 +56,33 @@ const axios=useAxios()
     LoginWithGoogle()
       .then((result) => {
         console.log(result.user);
-        // toast.success("Successfully Login!");
-        navigate(location?.state ? location.state : "/");
-      
+
+        const CurrentUser = { email: result.user.email };
+        // get access token
+        axios.post("auth/access-token", CurrentUser).then((res) => {
+          console.log(res.data);
+          if (res.data.success) {
+            navigate(location?.state ? location.state : "/");
+          }
+        });
       })
       .catch((error) => {
-        // toast.error("Login failed!.");
+        Swal.fire({
+          icon: "warning",
+          title: "Oops...",
+          text: "Login failed!",
+        });
         console.log(error.message);
         setResisterError(error.message);
       });
   };
 
   return (
-    <div className="">
+    <div className="flex justify-center items-center">
+      <Helmet>
+        <title>Login</title>
+        <link rel="canonical" href="https://www.tacobell.com/" />
+      </Helmet>
       {resisterError && <p className="text-red-700">{resisterError}</p>}
       {resisterSuccess && <p className="text-green-600">{resisterSuccess}</p>}
 
@@ -84,7 +93,7 @@ const axios=useAxios()
               Sign In
             </h3>
           </div>
-          <form onSubmit={handleLogIn}>
+          <form onSubmit={handleLogIn} >
             <div className="flex flex-col gap-4 p-6">
               <div className="relative h-11 w-full min-w-[200px]">
                 <input
@@ -175,12 +184,12 @@ const axios=useAxios()
               </p>
             </div>
           </form>
-          <div className="flex justify-center items-center btn bg-white border border-2  my-2 mx-7 ">
-              <FcGoogle
+          <div className="flex justify-center items-center btn bg-white  border-2  mb-7 mx-7 ">
+            <FcGoogle
               className="text-black text-4xl  cursor-pointer"
               onClick={handleGoogleLogin}
             ></FcGoogle>
-          <span className="font-semibold text-lg">Google </span>
+            <span className="font-semibold text-lg">Google </span>
           </div>
         </div>
       </div>

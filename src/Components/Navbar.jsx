@@ -1,36 +1,62 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import MaxWidth from "../CustomTags/MaxWidth";
 import { FaUserCircle } from "react-icons/fa";
 import { HiMiniBars3CenterLeft } from "react-icons/hi2";
 import useAuth from "../CustomHooks/useAuth";
 import { useState } from "react";
-import logo from "../assets/logo.png"
+import logo from "../assets/logo.png";
 import "./styles.css";
+import { BsThreeDotsVertical } from "react-icons/bs";
+import { AiOutlineClose } from "react-icons/ai";
 const Navbar = () => {
-  const { user,LogOut } = useAuth();
+  const { user, LogOut } = useAuth();
   const [toggle, setToggle] = useState(false);
 
-
-
   return (
-    <div className=" bg-slate-100 shadow-md">
+    <div className="  shadow-md sticky top-0 bg-[#ffffffc9] z-50">
       <MaxWidth>
         <div className="navbar ">
           <div className="flex-1 flex justify-between items-center">
             <div className="  flex-1">
-              <div className="hidden sm:block">
-                <a href="/" className=" "><img src={logo} alt="" className="w-16" /></a>
+              {/* sm:block */}
+              <div className="hidden  sm:flex  items-center">
+                <a href="/" className=" ">
+                  <img src={logo} alt="" className="w-16" />
+                </a>
+                <span className="font-bold text-3xl ">R<span className="text-[#1dcdbc]">M</span></span>
               </div>
-              <div className="relative sm:hidden">
+              <div className="relative sm:hidden flex justify-between items-center">
                 <div className="btn btn-ghost normal-case p-0">
-                  <HiMiniBars3CenterLeft
+                  {
+                    toggle?<AiOutlineClose className="text-3xl  drawer-button"
+                    onClick={() => {
+                      setToggle(!toggle);
+                    }}></AiOutlineClose>:<HiMiniBars3CenterLeft
                     className="text-3xl  drawer-button"
                     onClick={() => {
                       setToggle(!toggle);
                     }}
                   ></HiMiniBars3CenterLeft>
+                  }
+                  
                 </div>
-                <div className={`absolute top-[54px] left-0 w-60 z-50  transition ease-in-out delay-1000 ${toggle?'-ml-1':'-ml-64'}`}>
+
+                <div className="">
+                  {
+                    user?"":<ul className="text-center flex flex-col justify-center items-center -mb-2">
+                    <FaUserCircle className="text-xl -mb-2"></FaUserCircle>
+                    <a href="/register" className="hover:text-[#1dcdbc]">
+                      <span className="text-xs ">Register</span>
+                    </a>
+                  </ul>
+                  }
+                  
+                </div>
+                <div
+                  className={`absolute top-[54px] left-0 w-60 z-50  transition ease-in-out delay-1000 ${
+                    toggle ? "-ml-1" : "-ml-64"
+                  }`}
+                >
                   <ul className="menu menu-vertical p-4 bg-slate-100  h-screen text-base-content -ml-1">
                     <li>
                       <NavLink to="/" className="">
@@ -52,29 +78,40 @@ const Navbar = () => {
               </div>
             </div>
 
-            <div className="navbar-center hidden sm:flex justify-center flex-1">
+            <div className="navbar-center hidden sm:flex justify-between items-center flex-1">
               {/* {*flex gap-5 items-center *} */}
-              <ul className="menu menu-horizontal gap-3">
-                <li>
-                  <NavLink to="/" className="nav-link" >
+              <ul className="flex justify-evenly gap-16 ">
+                <li >
+                  <NavLink to="/" className="hover:text-[#1dcdbc] p-3 ">
                     Home
                   </NavLink>
                 </li>
-                <li>
-                  <NavLink to="/all-foods" className="">
+                <li >
+                  <NavLink to="/all-foods" className="hover:text-[#1dcdbc] p-3">
                     All Foods
                   </NavLink>
                 </li>
-                <li>
-                  <NavLink to="/blog" className="">
+                <li >
+                  <NavLink to="/blog" className="hover:text-[#1dcdbc] p-3">
                     Blog
                   </NavLink>
                 </li>
               </ul>
+              <div className="">
+                {
+                  user?"":<ul className="text-center flex flex-col justify-center items-center -mb-2">
+                <FaUserCircle className="text-xl -mb-2"></FaUserCircle>
+                <a href="/register" className="hover:text-[#1dcdbc]">
+                  <span className="text-xs ">Register</span>
+                </a>
+              </ul>
+                }
+              </div>
+              
             </div>
           </div>
           <div className="flex-none">
-            <div className="dropdown dropdown-end">
+            {/* <div className="dropdown dropdown-end">
               <label tabIndex={0} className="btn btn-ghost btn-circle">
                 <div className="indicator">
                   <svg
@@ -108,24 +145,39 @@ const Navbar = () => {
                   </div>
                 </div>
               </div>
-            </div>
+            </div> */}
+
             <div className="dropdown dropdown-end z-50">
-              <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-                <div className="text-3xl w-[36px] ">
-                  {user ? (
-                    <img src={user?.photoURL} alt="" className="rounded-full "/>
-                  ) : (
-                    <FaUserCircle className=""></FaUserCircle>
-                  )}
+              {/* <label tabIndex={0} className=" "> */}
+              <div className="flex justify-center items-center   ">
+                {user ? (
+                  <div className="flex justify-between items-center">
+                    <div className="flex justify-between items-center gap-2 rounded-full bg-[#1dcdbbb6] p-1">
+                      <h1 className="font-semibold pl-2 text-white">
+                        {user?.displayName}
+                      </h1>
+                      <img
+                        src={user?.photoURL}
+                        alt=""
+                        className="rounded-full w-[40px]"
+                      />
+                    </div>
+                  </div>
+                ) : (
+                  ""
+                )}
+                <div tabIndex={0} className="text-4xl cursor-pointer">
+                  <BsThreeDotsVertical></BsThreeDotsVertical>
                 </div>
-              </label>
+              </div>
+              {/* </label> */}
               <ul
                 tabIndex={0}
                 className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
               >
                 <li>
                   <a href="/myFoods" className="justify-between">
-                  My added food items
+                    My added food items
                     {/* <span className="badge">New</span> */}
                   </a>
                 </li>
@@ -136,10 +188,17 @@ const Navbar = () => {
                   <a href="/myOrders">My ordered food items</a>
                 </li>
                 <li>
-                    {
-                        user?<a onClick={()=>{LogOut()}}>Logout</a>:<a href="/logIn">LogIn</a>
-                    }
-                  
+                  {user ? (
+                    <a
+                      onClick={() => {
+                        LogOut();
+                      }}
+                    >
+                      Logout
+                    </a>
+                  ) : (
+                    <a href="/logIn">LogIn</a>
+                  )}
                 </li>
               </ul>
             </div>

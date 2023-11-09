@@ -3,6 +3,7 @@ import MaxWidth from "../CustomTags/MaxWidth";
 import useAuth from "../CustomHooks/useAuth";
 import useAxios from "../CustomHooks/useAxios";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 const popularCountries = ["USA", "Italy", "Japan", "Mexico", "India"];
 const popularFoodCategories = [
   "Appetizer","Main Course","Dessert","Beverage","Salad","Pasta","Sushi","Pizza"];
@@ -41,6 +42,10 @@ const sellCount = 0;
   };
   return (
     <div className=" mx-auto p-4 my-20">
+      <Helmet>
+        <title>Add Food</title>
+        <link rel="canonical" href="https://www.tacobell.com/" />
+      </Helmet>
       <MaxWidth>
         {" "}
         <div className="relative mx-4 -mt-6 mb-4 grid h-28 place-items-center overflow-hidden rounded-xl bg-gradient-to-tr from-pink-600 to-pink-400 bg-clip-border text-white shadow-lg shadow-pink-500/40">

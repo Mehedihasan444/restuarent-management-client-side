@@ -19,7 +19,12 @@ const ChickenTagliatelle = () => {
               the heart of Italy, blending tradition with a touch of modern
               elegance.
             </p>
-            <button className="btn btn-accent">View Our Menu</button>
+            <div className="">
+               <a href="/all-foods" className="">
+
+            <button className="btn btn-accent text-white">View Our Menu</button>
+            </a>
+            </div>
           </div>
           <div className="flex-1">
             <img

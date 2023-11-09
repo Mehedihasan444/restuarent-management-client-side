@@ -6,6 +6,7 @@ import MaxWidth from "../CustomTags/MaxWidth";
 import useAuth from "../CustomHooks/useAuth";
 import { useRef, useState } from "react";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 const FoodOrder = () => {
   const { foodId } = useParams();
@@ -72,7 +73,9 @@ const FoodOrder = () => {
         return;
       }
       // update quantity
-      let updateSellCount = food.sellCount + 1;
+      let updateSellCount = food.sellCount + Number(quantity);
+      console.log("sc",food.sellCount);
+      console.log("q",Number(quantity));
       console.log("updateSellCount", updateSellCount);
       const updateQuantityObj = {
         quantity: updateQuantity,
@@ -93,6 +96,10 @@ const FoodOrder = () => {
 
   return (
     <div className=" mx-auto p-4 my-20">
+      <Helmet>
+        <title>Food Order</title>
+        <link rel="canonical" href="https://www.tacobell.com/" />
+      </Helmet>
       <MaxWidth>
         {" "}
         <div className="relative mx-4 -mt-6 mb-4 grid h-28 place-items-center overflow-hidden rounded-xl bg-gradient-to-tr from-pink-600 to-pink-400 bg-clip-border text-white shadow-lg shadow-pink-500/40">

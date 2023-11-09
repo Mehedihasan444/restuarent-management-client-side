@@ -9,7 +9,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "./styles.css";
-import { Navigation } from "swiper/modules";
+import { Navigation,Autoplay } from "swiper/modules";
 import MaxWidth from "../../CustomTags/MaxWidth";
 import { Link } from "react-router-dom";
 
@@ -29,7 +29,7 @@ const TopSelling = () => {
 
   return (
     <MaxWidth>
-      <div className="my-16 sm:h-[90vh] px-5">
+      <div className="my-16 sm:h-[75vh] px-5">
         <div className="flex justify-between items-center">
           <H1Tag>Top Selling Foods</H1Tag>
           <Link to="/all-foods">
@@ -40,9 +40,14 @@ const TopSelling = () => {
         </div>
         <div className="my-5 ">
           <Swiper
-            navigation={true}
-            modules={[Navigation]}
-            spaceBetween={30}
+            navigation={false}
+            autoplay={{
+              delay: 4000,
+              disableOnInteraction: false,
+            }}
+            slidesPerView={1.15}
+            modules={[Navigation,Autoplay]}
+            spaceBetween={20}
             breakpoints={{
               // when window width is >= 576px
               // 576: {
@@ -62,12 +67,12 @@ const TopSelling = () => {
               // when window width is >= 1024px
               1024: {
                 width: 1024,
-                slidesPerView: 4,
+                slidesPerView:3.5,
               },
             }}
-            className="mySwiper "
+            className="mySwiper  h-[450px] px-5"
           >
-            {orders?.map((order) => (
+            {orders?.slice(0,6).map((order) => (
               <SwiperSlide key={order._id}>
                 <OrderCard order={order}></OrderCard>
               </SwiperSlide>
