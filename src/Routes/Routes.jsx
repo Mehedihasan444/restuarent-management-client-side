@@ -13,6 +13,8 @@ import MyFoods from "../Pages/MyFoods";
 import MyOrders from "../Pages/MyOrders";
 import UpdateFood from "../Pages/UpdateFood";
 import PrivateRoute from "./PrivateRoute";
+import Customer_Order_List from "../Pages/Customer_Order_List";
+import Cart from "../Pages/Cart";
 
 const Routes = createBrowserRouter([
     {
@@ -32,14 +34,7 @@ const Routes = createBrowserRouter([
                 path:"/blog",
                 element:<Blog></Blog>
             },
-            {
-                path:"/logIn",
-                element:<LogIn></LogIn>
-            },
-            {
-                path:"/register",
-                element:<Register></Register>
-            },
+          
             {
                 path:"/addFood",
                 element:<PrivateRoute><AddFood></AddFood></PrivateRoute>
@@ -57,15 +52,31 @@ const Routes = createBrowserRouter([
                 element:<PrivateRoute><MyFoods></MyFoods></PrivateRoute>
             },
             {
+                path:"/customerOrders",
+                element:<PrivateRoute><Customer_Order_List></Customer_Order_List></PrivateRoute>
+            },
+            {
                 path:"/myOrders",
                 element:<PrivateRoute><MyOrders></MyOrders></PrivateRoute>
             },
             {
                 path:"/updateFood/:foodId",
                 element:<PrivateRoute><UpdateFood></UpdateFood></PrivateRoute>
-            }
+            }, {
+        path:"/logIn",
+        element:<LogIn></LogIn>
+    },
+    {
+        path:"/register",
+        element:<Register></Register>
+    },
+    {
+        path:"/cart",
+        element:<PrivateRoute><Cart></Cart></PrivateRoute>
+    },
+            
         ]
-    }
+    }, 
 ]);
 
 export default Routes;

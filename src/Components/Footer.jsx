@@ -4,24 +4,24 @@ const Footer = () => {
   return (
     <div className=" bg-slate-100 ">
       <MaxWidth>
-        <footer className="footer p-10 text-base-content">
-          <aside>
+        <footer className="footer p-10 text-base-content ">
+          <nav>
             <img src={logo} alt="" className="w-24" />
             <p>
               RM Industries Ltd.
               <br />
               Providing reliable foods since 2020
             </p>
-            <address>
-            Menlo Park, California, United States
-            </address>
-          </aside>
+            <address>Menlo Park, California, United States</address>
+          </nav>
 
           <nav>
             <header className="footer-title">Company</header>
             <a className="link link-hover">About us</a>
             <a className="link link-hover">Contact</a>
-            <a className="link link-hover" href="/blog">Blog</a>
+            <a className="link link-hover" href="/blog">
+              Blog
+            </a>
           </nav>
           <nav>
             <header className="footer-title">Social links</header>
@@ -39,7 +39,7 @@ const Footer = () => {
           <nav>
             <form>
               <header className="footer-title">Newsletter</header>
-              <fieldset className="form-control sm:w-80">
+              <fieldset className="form-control lg:w-80">
                 <label className="label">
                   <span className="label-text">Enter your email address</span>
                 </label>
@@ -93,7 +93,9 @@ const Footer = () => {
           </nav>
         </footer>
         <hr />
-        <p className="text-center pb-5">All copy right reserved to RM Industries Ltd</p>
+        <p className="text-center pb-5">
+          All copy right reserved to RM Industries Ltd
+        </p>
       </MaxWidth>
     </div>
   );

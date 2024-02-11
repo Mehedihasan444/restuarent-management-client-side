@@ -5,8 +5,25 @@
     right:10px;
     padding: 30px;
     border-radius: 50px;
-    color: #000 !important;
+    color: #0effe7 !important;
     fill: black !important;
     stroke: black !important;
+    border: 2px solid #0effe7;
+    border-radius: 50px;
 }
+
+ /* Media query for screens with a maximum width of 768 pixels  */
+
+@media only screen and (max-width: 768px) {
+    .swiper-button-next,
+    .swiper-button-prev {
+        /* Adjust styles for smaller screens here */
+        padding: 20px; /* Example adjustment */
+        font-size: 5px;
+    }
+}
+
+
+
+
 

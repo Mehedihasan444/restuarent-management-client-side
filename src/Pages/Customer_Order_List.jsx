@@ -6,7 +6,7 @@ import MaxWidth from "../CustomTags/MaxWidth";
 import Swal from "sweetalert2";
 import { Helmet } from "react-helmet-async";
 
-const MyOrders = () => {
+const Customer_Order_List = () => {
   const { user } = useAuth();
   const axios = useAxios();
 
@@ -17,7 +17,7 @@ const MyOrders = () => {
   } = useQuery({
     queryKey: ["orders", user],
     queryFn: async () => {
-      const res = await axios.get(`/user/food-orders/${user?.email}`);
+      const res = await axios.get("/customer-orders");
       return res.data;
     },
   });
@@ -64,17 +64,14 @@ const MyOrders = () => {
               <th>Quantity</th>
               <th>Order Date & Time</th>
               <th>Food Owner</th>
-              <th>Status</th>
-              <th>Payment</th>
               <th>Actions</th>
             </tr>
           </thead>
           <tbody>
             {/* row 1 */}
-
             {orders.length == 0 ? (
-              <div className="text-lg font-semibold flex justify-center items-center w-full mt-10">
-                <h1>You have not order yet!</h1>
+              <div className="text-lg font-semibold">
+                <h1>There is no order!</h1>
               </div>
             ) : isPending ? (
               <Loading></Loading>
@@ -103,9 +100,6 @@ const MyOrders = () => {
                   <td>{order.quantity}</td>
                   <td>{order.orderDate}</td>
                   <td>{order.userName}</td>
-                  <td>{order?.status}</td>
-                  <td>{order?.payment}</td>
-
                   <th>
                     <div className="flex justify-start items-center gap-2">
                       <button
@@ -116,18 +110,22 @@ const MyOrders = () => {
                       >
                         Cancel
                       </button>
-                      {order?.payment === "pending" ? (
-                        <button
-                          className="btn btn-sm text-xs btn-accent text-white"
-                          onClick={() => {
-                            handleCancel(order._id);
-                          }}
-                        >
-                          Pay
-                        </button>
-                      ) : (
-                        ""
-                      )}
+                      <button
+                        className="btn  btn-sm text-xs btn-primary text-white"
+                        onClick={() => {
+                          handleCancel(order._id);
+                        }}
+                      >
+                        Location
+                      </button>
+                      <button
+                        className="btn btn-sm text-xs btn-accent text-white"
+                        onClick={() => {
+                          handleCancel(order._id);
+                        }}
+                      >
+                        Status
+                      </button>
                     </div>
                   </th>
                 </tr>
@@ -140,4 +138,4 @@ const MyOrders = () => {
   );
 };
 
-export default MyOrders;
+export default Customer_Order_List;

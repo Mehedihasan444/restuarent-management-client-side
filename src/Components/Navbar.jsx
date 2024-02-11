@@ -1,16 +1,32 @@
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import MaxWidth from "../CustomTags/MaxWidth";
 import { FaUserCircle } from "react-icons/fa";
 import { HiMiniBars3CenterLeft } from "react-icons/hi2";
 import useAuth from "../CustomHooks/useAuth";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import logo from "../assets/logo.png";
 import "./styles.css";
-import { BsThreeDotsVertical } from "react-icons/bs";
 import { AiOutlineClose } from "react-icons/ai";
+import useAxios from "../CustomHooks/useAxios";
+
+
 const Navbar = () => {
   const { user, LogOut } = useAuth();
   const [toggle, setToggle] = useState(false);
+  const axios = useAxios();
+  const [checkUser, setCheckUser] = useState("");
+
+
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await axios.get(`/user/role/${user.email}`);
+      console.log(response.data);
+      setCheckUser(response.data.role);
+    };
+
+    fetchData();
+  }, [axios, user]);
 
   return (
     <div className="  shadow-md sticky top-0 bg-[#ffffffc9] z-50">
@@ -18,39 +34,44 @@ const Navbar = () => {
         <div className="navbar ">
           <div className="flex-1 flex justify-between items-center">
             <div className="  flex-1">
-              {/* sm:block */}
               <div className="hidden  sm:flex  items-center">
                 <a href="/" className=" ">
                   <img src={logo} alt="" className="w-16" />
                 </a>
-                <span className="font-bold text-3xl ">R<span className="text-[#1dcdbc]">M</span></span>
+                <span className="font-bold text-3xl ">
+                  R<span className="text-[#1dcdbc]">M</span>
+                </span>
               </div>
               <div className="relative sm:hidden flex justify-between items-center">
                 <div className="btn btn-ghost normal-case p-0">
-                  {
-                    toggle?<AiOutlineClose className="text-3xl  drawer-button"
-                    onClick={() => {
-                      setToggle(!toggle);
-                    }}></AiOutlineClose>:<HiMiniBars3CenterLeft
-                    className="text-3xl  drawer-button"
-                    onClick={() => {
-                      setToggle(!toggle);
-                    }}
-                  ></HiMiniBars3CenterLeft>
-                  }
-                  
+                  {toggle ? (
+                    <AiOutlineClose
+                      className="text-3xl  drawer-button"
+                      onClick={() => {
+                        setToggle(!toggle);
+                      }}
+                    ></AiOutlineClose>
+                  ) : (
+                    <HiMiniBars3CenterLeft
+                      className="text-3xl  drawer-button"
+                      onClick={() => {
+                        setToggle(!toggle);
+                      }}
+                    ></HiMiniBars3CenterLeft>
+                  )}
                 </div>
 
                 <div className="">
-                  {
-                    user?"":<ul className="text-center flex flex-col justify-center items-center -mb-2">
-                    <FaUserCircle className="text-xl -mb-2"></FaUserCircle>
-                    <a href="/register" className="hover:text-[#1dcdbc]">
-                      <span className="text-xs ">Register</span>
-                    </a>
-                  </ul>
-                  }
-                  
+                  {user ? (
+                    ""
+                  ) : (
+                    <ul className="text-center flex flex-col justify-center items-center -mb-2">
+                      <FaUserCircle className="text-xl -mb-2"></FaUserCircle>
+                      <a href="/register" className="hover:text-[#1dcdbc]">
+                        <span className="text-xs ">Register</span>
+                      </a>
+                    </ul>
+                  )}
                 </div>
                 <div
                   className={`absolute top-[54px] left-0 w-60 z-50  transition ease-in-out delay-1000 ${
@@ -80,113 +101,91 @@ const Navbar = () => {
 
             <div className="navbar-center hidden sm:flex justify-between items-center flex-1">
               {/* {*flex gap-5 items-center *} */}
-              <ul className="flex justify-evenly gap-16 ">
-                <li >
+              <ul className="flex justify-evenly md:gap-2 lg:gap-10">
+                <li>
                   <NavLink to="/" className="hover:text-[#1dcdbc] p-3 ">
                     Home
                   </NavLink>
                 </li>
-                <li >
+                <li>
                   <NavLink to="/all-foods" className="hover:text-[#1dcdbc] p-3">
                     All Foods
                   </NavLink>
                 </li>
-                <li >
+                <li>
                   <NavLink to="/blog" className="hover:text-[#1dcdbc] p-3">
                     Blog
                   </NavLink>
                 </li>
               </ul>
               <div className="">
-                {
-                  user?"":<ul className="text-center flex flex-col justify-center items-center -mb-2">
-                <FaUserCircle className="text-xl -mb-2"></FaUserCircle>
-                <a href="/register" className="hover:text-[#1dcdbc]">
-                  <span className="text-xs ">Register</span>
-                </a>
-              </ul>
-                }
+                {user ? (
+                  ""
+                ) : (
+                  <ul className="text-center flex flex-col justify-center items-center -mb-2">
+                    <FaUserCircle className="text-xl -mb-2"></FaUserCircle>
+                    <a href="/register" className="hover:text-[#1dcdbc]">
+                      <span className="text-xs ">Register</span>
+                    </a>
+                  </ul>
+                )}
               </div>
-              
             </div>
           </div>
           <div className="flex-none">
-            {/* <div className="dropdown dropdown-end">
-              <label tabIndex={0} className="btn btn-ghost btn-circle">
-                <div className="indicator">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-5 w-5"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
-                    />
-                  </svg>
-                  <span className="badge badge-sm indicator-item">8</span>
-                </div>
-              </label>
-              <div
-                tabIndex={0}
-                className="mt-3 z-[1] card card-compact dropdown-content w-52 bg-base-100 shadow"
-              >
-                <div className="card-body">
-                  <span className="font-bold text-lg">8 Items</span>
-                  <span className="text-info">Subtotal: $999</span>
-                  <div className="card-actions">
-                    <button className="btn btn-primary btn-block">
-                      View cart
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div> */}
-
             <div className="dropdown dropdown-end z-50">
-              {/* <label tabIndex={0} className=" "> */}
               <div className="flex justify-center items-center   ">
                 {user ? (
                   <div className="flex justify-between items-center">
                     <div className="flex justify-between items-center gap-2 rounded-full bg-[#1dcdbbb6] p-1">
-                      <h1 className="font-semibold pl-2 text-white">
+                      <h1 className=" pl-2 text-white text-xs">
                         {user?.displayName}
                       </h1>
                       <img
+                        tabIndex={0}
                         src={user?.photoURL}
                         alt=""
-                        className="rounded-full w-[40px]"
+                        className="rounded-full w-[40px] h-[40px]  cursor-pointer"
                       />
                     </div>
                   </div>
                 ) : (
                   ""
                 )}
-                <div tabIndex={0} className="text-4xl cursor-pointer">
-                  <BsThreeDotsVertical></BsThreeDotsVertical>
-                </div>
               </div>
-              {/* </label> */}
+
               <ul
                 tabIndex={0}
                 className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
               >
-                <li>
-                  <a href="/myFoods" className="justify-between">
-                    My added food items
-                    {/* <span className="badge">New</span> */}
-                  </a>
-                </li>
-                <li>
-                  <a href="/addFood">Add a food item</a>
-                </li>
-                <li>
-                  <a href="/myOrders">My ordered food items</a>
-                </li>
+                {checkUser === "admin" ? (
+                  <>
+                    {" "}
+                    <li>
+                      <a href="/myFoods" className="justify-between">
+                        My added food items
+                      </a>
+                    </li>
+                    <li>
+                      <a href="/customerOrders" className="justify-between">
+                        Customer Orders
+                      </a>
+                    </li>
+                    <li>
+                      <a href="/addFood">Add a food item</a>
+                    </li>
+                  </>
+                ) : (
+                  <> <li>
+                    <a href="/myOrders">My ordered food items</a>
+                  </li>
+                  <li>
+                    <a href="/cart">Cart</a>
+                  </li>
+                  </>
+                 
+                )}
+
                 <li>
                   {user ? (
                     <a

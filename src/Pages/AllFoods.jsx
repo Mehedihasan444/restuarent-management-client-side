@@ -17,7 +17,12 @@ const AllFoods = () => {
   const [numberOfPages, setNumberOfPages] = useState(1);
   const [searchValue, setSearchValue] = useState("");
   const [search, setSearch] = useState("");
-  const { data: foods, isPending} = useQuery({
+
+  const {
+    data: foods,
+    isPending,
+    refetch,
+  } = useQuery({
     queryKey: [
       "foods",
       sortByPrice,
@@ -40,12 +45,11 @@ const AllFoods = () => {
     if (foods) {
       setData(foods);
       const count = foods.count;
-      console.log(count);
+      // console.log(count);
       const NumOfPages = Math.ceil(count / itemsPerPage);
       setNumberOfPages(NumOfPages);
     }
-  }, [foods, itemsPerPage]);
-  if (isPending) return <Loading></Loading>;
+  }, [foods, itemsPerPage, data]);
 
   const pages = [...Array(numberOfPages).keys()];
   const handleItemsPerPage = (e) => {
@@ -83,8 +87,9 @@ const AllFoods = () => {
         <div className="hidden lg:flex">
           <H1Tag>All Foods</H1Tag>
         </div>
+        {/* filtration */}
         <div className="flex justify-center items-end mx-5 md:w-1/2 lg:w-auto relative">
-          <div className="form-control mt-5 ">
+          <div className="form-control ">
             <input
               type="text"
               placeholder="Search"
@@ -92,31 +97,37 @@ const AllFoods = () => {
               className="input input-bordered rounded-full  w-80  "
               onChange={(e) => setSearch(e.target.value)}
             />
-            <div className="absolute top-1/2 right-8  lg:right-4 cursor-pointer">
+            <div className="absolute top-4 right-8  lg:right-4 cursor-pointer">
               <BsSearch onClick={handleSearch}></BsSearch>
             </div>
           </div>
         </div>
         <div className="flex gap-5 items-center md:w-1/2 lg:w-auto">
           <div className="">
-            <label>Sort By Price</label>
+            {/* <label className="">Sort By Price</label> */}
             <select
               className="select w-full max-w-xs input-bordered"
               value={sortByPrice}
+              // defaultValue={sortByPrice}
               onChange={(e) => setSortByPrice(e.target.value)}
             >
-              <option value="">Random Price</option>
+              <option value="" selected disabled>
+                Sort By Price
+              </option>
               <option value="desc">High To Low</option>
               <option value="asc">Low To High</option>
             </select>
           </div>
           <div className="">
-            <label>Filter By Category</label>
+            {/* <label>Filter By Category</label> */}
             <select
               value={categoryFilter}
               onChange={(e) => setCategoryFilter(e.target.value)}
               className="select w-full max-w-xs input-bordered"
             >
+              <option value="" selected disabled>
+                Select Category
+              </option>
               <option value="">All</option>
               <option value="Appetizer">Appetizer</option>
               <option value="Main Course">Main Course</option>
@@ -130,21 +141,30 @@ const AllFoods = () => {
           </div>
         </div>
       </div>
+      {/* foods */}
       <div className="grid sm:grid-cols-3 lg:grid-cols-4 gap-5 px-5 mb-10">
-        {data.result?.map((food) => (
-          <FoodCard key={food._id} food={food}></FoodCard>
-        ))}
+        {isPending ? (
+          <div className="flex justify-center items-center w-[85vw]">
+            <Loading />
+          </div>
+        ) : (
+          data.result?.map((food) => (
+            <FoodCard key={food._id} food={food}></FoodCard>
+          ))
+        )}
       </div>
+
+      {/* pagination */}
       <div className="flex justify-center sm:justify-end items-center pr-5">
         <div className="py-10 text-center">
           {/* <p>current page : {currentPage}</p> */}
-          <button className="btn btn-accent mr-3" onClick={handlePreviousPage}>
+          <button className="btn btn-accent mr-3 text-white" onClick={handlePreviousPage}>
             «
           </button>
           {pages.map((page) => (
             <button
               className={`${
-                currentPage === page + 1 ? "btn-disabled" : ""
+                currentPage === page + 1 ? "btn-disabled" : "text-white"
               } mr-2 btn btn-accent`}
               key={page}
               onClick={() => setCurrentPage(page + 1)}
@@ -152,7 +172,7 @@ const AllFoods = () => {
               {page + 1}
             </button>
           ))}
-          <button className="btn btn-accent" onClick={handleNextPage}>
+          <button className="btn btn-accent text-white" onClick={handleNextPage}>
             »
           </button>
           <select

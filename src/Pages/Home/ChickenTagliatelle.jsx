@@ -4,8 +4,17 @@ import H1Tag from '../../CustomTags/H1Tag';
 const ChickenTagliatelle = () => {
     return (
         <div>
-             <div className="max-w-7xl mx-auto px-5 text-justify space-y-3 sm:flex justify-between items-center gap-5">
-          <div className="flex-1 space-y-4">
+             <div className="max-w-7xl mx-auto px-5 md:h-screen text-justify space-y-3 sm:flex justify-between items-center gap-5">
+          <div className="flex-1 space-y-4" 
+    // data-aos="fade-bottom"
+    // data-aos-offset="200"
+    // data-aos-delay="50"
+    // data-aos-duration="2000"
+    // data-aos-easing="ease-in-out"
+    // data-aos-mirror="true"
+    // data-aos-once="false"
+    // data-aos-anchor-placement="top-center"
+    >
             <p className="">TASTY AND CRUNCHY</p>
             <H1Tag>Chicken Tagliatelle</H1Tag>
 
@@ -26,7 +35,16 @@ const ChickenTagliatelle = () => {
             </a>
             </div>
           </div>
-          <div className="flex-1">
+          <div className="flex-1"
+    //        data-aos="fade-top"
+    // data-aos-offset="200"
+    // data-aos-delay="50"
+    // data-aos-duration="1000"
+    // data-aos-easing="ease-in-out"
+    // data-aos-mirror="true"
+    // data-aos-once="false"
+    // data-aos-anchor-placement="top-center"
+    >
             <img
               src="https://savory.qodeinteractive.com/wp-content/uploads/2016/10/white-home-img5.jpg"
               alt=""

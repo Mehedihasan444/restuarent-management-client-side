@@ -48,7 +48,7 @@ const sellCount = 0;
       </Helmet>
       <MaxWidth>
         {" "}
-        <div className="relative mx-4 -mt-6 mb-4 grid h-28 place-items-center overflow-hidden rounded-xl bg-gradient-to-tr from-pink-600 to-pink-400 bg-clip-border text-white shadow-lg shadow-pink-500/40">
+        <div className="relative mx-4 -mt-6 mb-4 grid h-28 place-items-center overflow-hidden rounded-xl bg-gradient-to-tr from-[#1dcdbc] to-[#78f4e8] bg-clip-border text-white shadow-lg ">
           <h3 className="block font-sans text-3xl font-semibold leading-snug tracking-normal text-white antialiased">
             Add Food
           </h3>
@@ -189,7 +189,7 @@ const sellCount = 0;
 
           <button
             type="submit"
-            className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-lg"
+            className="bg-[#1dcdbc] hover:bg-[#38988e] text-white py-2 px-4 rounded-lg"
           >
             Add Item
           </button>

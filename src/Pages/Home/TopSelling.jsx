@@ -2,30 +2,26 @@ import { useQuery } from "@tanstack/react-query";
 import useAxios from "../../CustomHooks/useAxios";
 import H1Tag from "../../CustomTags/H1Tag";
 import Loading from "../../Components/Loading";
-import useAuth from "../../CustomHooks/useAuth";
 import OrderCard from "../../Components/OrderCard";
-
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "./styles.css";
-import { Navigation,Autoplay } from "swiper/modules";
+import { Navigation, Autoplay } from "swiper/modules";
 import MaxWidth from "../../CustomTags/MaxWidth";
 import { Link } from "react-router-dom";
 
 const TopSelling = () => {
-  const { user } = useAuth();
   const axios = useAxios();
+
   const { isPending, data: orders } = useQuery({
     queryKey: ["orders"],
     queryFn: async () => {
       const res = await axios.get(`/foods/desc`);
-      // console.log(res.data);
       return res.data;
     },
   });
-  //   console.log(order);
-  if (isPending) return <Loading></Loading>;
+
 
   return (
     <MaxWidth>
@@ -45,34 +41,29 @@ const TopSelling = () => {
               delay: 4000,
               disableOnInteraction: false,
             }}
+            loop={true}
             slidesPerView={1.15}
-            modules={[Navigation,Autoplay]}
+            modules={[Navigation, Autoplay]}
             spaceBetween={20}
             breakpoints={{
-              // when window width is >= 576px
-              // 576: {
-              //   width: 576,
-              //   slidesPerView: 2,
-              // },
-              // when window width is >= 640px
               640: {
                 width: 640,
                 slidesPerView: 2,
               },
-              // when window width is >= 1024px
+
               768: {
                 width: 768,
                 slidesPerView: 2.5,
               },
-              // when window width is >= 1024px
+
               1024: {
                 width: 1024,
-                slidesPerView:3.5,
+                slidesPerView: 3.5,
               },
             }}
             className="mySwiper  h-[450px] px-5"
           >
-            {orders?.slice(0,6).map((order) => (
+            {isPending?<div className=""><Loading/></div>:orders?.slice(0, 10).map((order) => (
               <SwiperSlide key={order._id}>
                 <OrderCard order={order}></OrderCard>
               </SwiperSlide>

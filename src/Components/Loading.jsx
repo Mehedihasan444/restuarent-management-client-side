@@ -6,8 +6,8 @@ const Loading = () => {
     loop: true,
   };
   const { View } = useLottie(options);
-  return <div className="flex justify-center">
-    <div className="w-72">{View}</div>
+  return <div className="flex justify-center items-center h-[calc(100vh-389px)]">
+    <div className="w-52 ">{View}</div>
   </div>;
 };
 

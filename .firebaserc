@@ -1,5 +1,8 @@
 {
   "projects": {
-    "default": "restaurant-management-6fce7"
-  }
+    "default": "restaurant-management-6fce7",
+    "production": "restaurant-management-we-cf9e7"
+  },
+  "targets": {},
+  "etags": {}
 }

@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import useAxios from "../CustomHooks/useAxios";
 import Loading from "../Components/Loading";
 import MaxWidth from "../CustomTags/MaxWidth";
@@ -16,8 +16,8 @@ const FoodOrder = () => {
   const name = useRef();
   const Quantity = useRef();
   const Price = useRef();
-  const date = useRef();
-
+  const address = useRef();
+const nevigate=useNavigate()
   const { isPending, data: food } = useQuery({
     queryKey: ["foodId"],
     queryFn: async () => {
@@ -38,7 +38,7 @@ const FoodOrder = () => {
     const foodName = name.current.value;
     const quantity = Quantity.current.value;
     const price = Price.current.value;
-    const orderDate = date.current.value;
+    const location = address.current.value;
     // setSellCount(sellCount + 1);
 
     const information = {
@@ -47,14 +47,26 @@ const FoodOrder = () => {
       foodCategory,
       quantity,
       price,
-      orderDate,
+      location,
       userName,
       userEmail,
+      orderDate: new Date(),
+      status: "pending",
+      payment: "pending",
     };
     // console.log(information);
     let updateQuantity;
+    updateQuantity = food.quantity - Number(quantity);
+    if (updateQuantity < 0 || Number(quantity) > food.quantity) {
+      Swal.fire({
+        icon: "warning",
+        title: "Oops...",
+        text: "Stock is not available!",
+      });
+      return;
+    }
+
     axios.post("/user/food-order", information).then((res) => {
-      updateQuantity = food.quantity - quantity;
       console.log("updatedQ", updateQuantity);
       if (quantity == 0) {
         Swal.fire({
@@ -64,19 +76,12 @@ const FoodOrder = () => {
         });
         return;
       }
-      if (updateQuantity < 0 || quantity > food.quantity) {
-        Swal.fire({
-          icon: "warning",
-          title: "Oops...",
-          text: "Stock is not available!",
-        });
-        return;
-      }
+
       // update quantity
       let updateSellCount = food.sellCount + Number(quantity);
-      console.log("sc",food.sellCount);
-      console.log("q",Number(quantity));
-      console.log("updateSellCount", updateSellCount);
+      // console.log("sc", food.sellCount);
+      // console.log("q", Number(quantity));
+      // console.log("updateSellCount", updateSellCount);
       const updateQuantityObj = {
         quantity: updateQuantity,
         sellCount: updateSellCount,
@@ -86,12 +91,14 @@ const FoodOrder = () => {
           console.log(res.data);
           Swal.fire({
             icon: "success",
-            title: "Oops...",
+            title: "Placed",
             text: "Your order is successfully placed!",
           });
+
         });
       }
     });
+    nevigate("/myOrders")
   };
 
   return (
@@ -102,7 +109,7 @@ const FoodOrder = () => {
       </Helmet>
       <MaxWidth>
         {" "}
-        <div className="relative mx-4 -mt-6 mb-4 grid h-28 place-items-center overflow-hidden rounded-xl bg-gradient-to-tr from-pink-600 to-pink-400 bg-clip-border text-white shadow-lg shadow-pink-500/40">
+        <div className="relative mx-4 -mt-6 mb-4 grid h-28 place-items-center overflow-hidden rounded-xl bg-gradient-to-tr from-[#1dcdbc] to-[#78f4e8] bg-clip-border text-white shadow-lg ">
           <h3 className="block font-sans text-3xl font-semibold leading-snug tracking-normal text-white antialiased">
             Order Food
           </h3>
@@ -127,15 +134,15 @@ const FoodOrder = () => {
             </div>
             <div className="mb-4 flex-1">
               <label htmlFor="orderDate" className="block text-gray-600">
-                Order Date
+                Location
               </label>
               <input
-                type="date"
-                id="orderDate"
+                type="text"
+                id="address"
                 required
                 className="border rounded-lg py-2 px-3 w-full"
                 // value={orderDate}
-                ref={date}
+                ref={address}
               />
             </div>
           </div>
@@ -196,13 +203,14 @@ const FoodOrder = () => {
               />
             </div>
           </div>
-
-          <button
-            type="submit"
-            className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-lg"
-          >
-            Placed Order
-          </button>
+          {/* <Link to="/myOrders"> */}
+            <button
+              type="submit"
+              className="bg-[#1dcdbc] hover:bg-[#2f837a] text-white py-2 px-4 rounded-lg"
+            >
+              Placed Order
+            </button>
+          {/* </Link> */}
         </form>
       </MaxWidth>
     </div>
