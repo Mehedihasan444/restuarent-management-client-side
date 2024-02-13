@@ -53,6 +53,7 @@ const nevigate=useNavigate()
       orderDate: new Date(),
       status: "pending",
       payment: "pending",
+      transactionId: ""
     };
     // console.log(information);
     let updateQuantity;
@@ -79,9 +80,7 @@ const nevigate=useNavigate()
 
       // update quantity
       let updateSellCount = food.sellCount + Number(quantity);
-      // console.log("sc", food.sellCount);
-      // console.log("q", Number(quantity));
-      // console.log("updateSellCount", updateSellCount);
+  
       const updateQuantityObj = {
         quantity: updateQuantity,
         sellCount: updateSellCount,

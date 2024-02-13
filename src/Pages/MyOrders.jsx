@@ -21,7 +21,7 @@ const MyOrders = () => {
       return res.data;
     },
   });
-
+  refetch()
   const handleCancel = async (id) => {
     Swal.fire({
       title: "Are you sure?",
@@ -47,6 +47,13 @@ const MyOrders = () => {
       }
     });
   };
+
+  const handlePayment = async (id) => {
+    const res = await axios.post(`/user/food/payment/${id}`);
+    window.location.replace(res.data.url);
+  };
+
+
 
   return (
     <MaxWidth>
@@ -120,7 +127,7 @@ const MyOrders = () => {
                         <button
                           className="btn btn-sm text-xs btn-accent text-white"
                           onClick={() => {
-                            handleCancel(order._id);
+                            handlePayment(order._id);
                           }}
                         >
                           Pay
